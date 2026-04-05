@@ -1,41 +1,19 @@
-// Smooth scroll for navigation links
+// Smooth scroll with nav offset
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            const navHeight = document.querySelector('.nav').offsetHeight;
-            const targetPosition = target.offsetTop - navHeight;
+            const navHeight = document.querySelector('nav').offsetHeight;
             window.scrollTo({
-                top: targetPosition,
+                top: target.offsetTop - navHeight,
                 behavior: 'smooth'
             });
         }
     });
 });
 
-// Add scroll effect to navigation
-let lastScroll = 0;
-const nav = document.querySelector('.nav');
-
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll > 100) {
-        nav.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.05)';
-    } else {
-        nav.style.boxShadow = 'none';
-    }
-    
-    lastScroll = currentScroll;
-});
-
-// Add fade-in animation on scroll
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
+// Fade-in sections on scroll
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -43,12 +21,11 @@ const observer = new IntersectionObserver((entries) => {
             entry.target.style.transform = 'translateY(0)';
         }
     });
-}, observerOptions);
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-// Observe all sections
 document.querySelectorAll('section').forEach(section => {
     section.style.opacity = '0';
-    section.style.transform = 'translateY(20px)';
-    section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    section.style.transform = 'translateY(16px)';
+    section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
     observer.observe(section);
 });
