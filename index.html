@@ -3,163 +3,1002 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aaina Narang | GTM for B2B SaaS</title>
-    <meta name="description" content="I build GTM from scratch for B2B SaaS companies. Strategy, execution, and the messy middle.">
-    <link rel="stylesheet" href="styles.css">
+    <title>Aaina Hero Mockup</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f7fbf2;
+            --paper: #fffff8;
+            --ink: #102018;
+            --muted: #657168;
+            --line: #dfe8d8;
+            --accent: #caff67;
+            --accent-deep: #6f9434;
+            --soft-green: #edf7df;
+            --folder-shadow: rgba(35, 54, 33, 0.16);
+            --font-body: "DM Sans", system-ui, sans-serif;
+            --font-mono: "DM Mono", monospace;
+            --font-serif: "Instrument Serif", Georgia, serif;
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            min-height: 100%;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--font-body);
+            color: var(--ink);
+            background:
+                radial-gradient(circle at 18% 78%, rgba(111, 148, 52, 0.11), transparent 18rem),
+                linear-gradient(180deg, var(--bg), #fffdf5);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.34;
+            background-image:
+                linear-gradient(rgba(16, 32, 24, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(16, 32, 24, 0.03) 1px, transparent 1px);
+            background-size: 44px 44px;
+            mask-image: linear-gradient(to bottom, black, transparent 92%);
+        }
+
+        .hero {
+            min-height: 100dvh;
+            display: grid;
+            place-items: center;
+            padding: 1.5rem 2rem 0;
+        }
+
+        .hero-panel {
+            width: min(1440px, 100%);
+            min-height: auto;
+            position: relative;
+            display: grid;
+            grid-template-rows:
+                auto
+                auto;
+            align-content: center;
+            justify-items: center;
+            gap: clamp(3rem, 7vh, 5rem);
+            padding: 0 clamp(2rem, 5vw, 4.5rem);
+            overflow: hidden;
+        }
+
+        .hero-panel::after { content: none; }
+
+        .top-action {
+            position: fixed;
+            top: 2.4rem;
+            right: 3.2rem;
+            z-index: 2;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 6rem;
+            padding: 0.72rem 1rem;
+            color: var(--ink);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 700;
+            border: 1px solid rgba(16, 32, 24, 0.5);
+            border-radius: 0.68rem;
+            background: rgba(255, 255, 248, 0.82);
+            box-shadow: 0 7px 0 rgba(16, 32, 24, 0.08);
+            transition: transform 0.24s var(--ease), box-shadow 0.24s var(--ease);
+        }
+
+        .top-action:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 18px rgba(16, 32, 24, 0.1);
+        }
+
+        .intro {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 920px;
+        }
+
+        h1 {
+            margin: 0;
+            font-family: var(--font-serif);
+            font-size: clamp(2.8rem, 5.6vw, 4.6rem);
+            font-weight: 400;
+            line-height: 0.94;
+            letter-spacing: 0;
+        }
+
+        .subheading {
+            max-width: 760px;
+            min-height: 4.4rem;
+            margin: 1.4rem auto 0;
+            color: var(--muted);
+            font-size: clamp(1.08rem, 2vw, 1.42rem);
+            line-height: 1.55;
+        }
+
+        .word-shell {
+            display: inline-flex;
+            align-items: center;
+            min-width: 13ch;
+            color: var(--ink);
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .animated-word {
+            display: inline-block;
+            padding: 0.02em 0.18em 0.08em;
+            color: var(--ink);
+            background: linear-gradient(180deg, rgba(202, 255, 103, 0) 42%, rgba(202, 255, 103, 0.72) 42%);
+            border-radius: 0.28rem;
+        }
+
+        .animated-word.is-changing {
+            animation: word-pop 0.42s var(--ease);
+        }
+
+        .folder-nav {
+            position: relative;
+            z-index: 1;
+            margin-top: 0;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 2.6rem;
+            width: min(600px, 100%);
+        }
+
+        .folder {
+            position: relative;
+            min-height: 126px;
+            padding: 0;
+            display: grid;
+            grid-template-rows: auto auto;
+            gap: 0.45rem;
+            justify-items: center;
+            text-decoration: none;
+            color: var(--ink);
+            transition: transform 0.32s var(--ease), filter 0.32s var(--ease);
+            overflow: visible;
+        }
+
+        .folder img {
+            width: min(100%, 168px);
+            height: auto;
+            display: block;
+            filter:
+                saturate(0.58)
+                brightness(0.98)
+                drop-shadow(0 14px 18px rgba(59, 88, 38, 0.12));
+            opacity: 0.9;
+        }
+
+        .folder span {
+            display: block;
+            font-family: var(--font-body);
+            font-size: 1.08rem;
+            font-weight: 500;
+            letter-spacing: 0;
+            text-transform: none;
+        }
+
+        .folder small {
+            display: none;
+            margin-top: 0.2rem;
+            color: var(--muted);
+            font-size: 0.86rem;
+        }
+
+        .folder:hover {
+            transform: translateY(-7px);
+            filter: saturate(1.05);
+        }
+
+        .folder:nth-child(2) {
+            transform: none;
+        }
+
+        .folder:nth-child(2):hover {
+            transform: translateY(-8px);
+        }
+
+        .work-section,
+        .blog-section,
+        .projects-section {
+            position: relative;
+            min-height: auto;
+            padding: clamp(1.25rem, 3vh, 2rem) 2rem 2rem;
+        }
+
+        .work-panel,
+        .blog-panel,
+        .projects-panel {
+            width: min(1120px, 100%);
+            margin: 0 auto;
+            padding: clamp(1.4rem, 4vw, 3.4rem) 0;
+        }
+
+        .work-intro,
+        .blog-intro {
+            max-width: 900px;
+            margin: 0 auto clamp(1.8rem, 4vw, 3rem);
+            text-align: center;
+        }
+
+        .work-intro h2,
+        .blog-intro h2 {
+            margin: 0;
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 4vw, 3.45rem);
+            font-weight: 400;
+            line-height: 0.98;
+            letter-spacing: 0;
+        }
+
+        .blog-intro h2 {
+            font-size: clamp(1.45rem, 2.7vw, 2.35rem);
+            line-height: 1.08;
+        }
+
+        .work-intro p,
+        .blog-intro p {
+            width: min(620px, 100%);
+            margin: 1.1rem auto 0;
+            color: var(--muted);
+            font-size: clamp(0.98rem, 1.35vw, 1.08rem);
+            line-height: 1.6;
+        }
+
+        .work-map {
+            position: relative;
+            display: grid;
+            width: min(1120px, 100%);
+            margin: clamp(1.7rem, 4vw, 3.2rem) auto 0;
+            border-top: 1px solid rgba(16, 32, 24, 0.12);
+        }
+
+        .work-card {
+            position: relative;
+            display: grid;
+            grid-template-columns: minmax(150px, 0.36fr) minmax(0, 1fr);
+            gap: clamp(1rem, 3vw, 2.5rem);
+            padding: clamp(1.35rem, 3vw, 2.2rem) 0;
+            border-bottom: 1px solid rgba(16, 32, 24, 0.1);
+            opacity: 0;
+            transform: translateY(12px);
+        }
+
+        .work-card h3 {
+            margin: 0;
+            font-family: var(--font-mono);
+            font-size: clamp(0.98rem, 1.42vw, 1.18rem);
+            font-weight: 600;
+            letter-spacing: 0;
+            text-transform: uppercase;
+        }
+
+        .work-card ul {
+            display: grid;
+            gap: 0.7rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .work-card li {
+            color: var(--muted);
+            font-size: clamp(0.95rem, 1.18vw, 1.04rem);
+            line-height: 1.5;
+        }
+
+        .outcome {
+            color: var(--ink);
+            font-weight: 700;
+            background: linear-gradient(180deg, rgba(202, 255, 103, 0) 50%, rgba(202, 255, 103, 0.68) 50%);
+            border-radius: 0.22rem;
+        }
+
+        .work-map.is-visible .work-card {
+            animation: reveal-work-card 0.52s var(--ease) forwards;
+        }
+
+        .work-map.is-visible .work-card:nth-of-type(1) {
+            animation-delay: 0.12s;
+        }
+
+        .work-map.is-visible .work-card:nth-of-type(2) {
+            animation-delay: 0.28s;
+        }
+
+        .work-map.is-visible .work-card:nth-of-type(3) {
+            animation-delay: 0.44s;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            border-top: 1px solid rgba(16, 32, 24, 0.12);
+        }
+
+        .blog-card {
+            min-height: 176px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 0.7rem;
+            padding: clamp(1.05rem, 2.8vw, 1.8rem) clamp(0.9rem, 2.8vw, 1.8rem);
+            color: var(--ink);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(16, 32, 24, 0.11);
+            transition:
+                background 0.28s var(--ease),
+                color 0.28s var(--ease);
+        }
+
+        .blog-card:nth-child(odd) {
+            border-right: 1px solid rgba(16, 32, 24, 0.1);
+        }
+
+        .blog-card:last-child:nth-child(odd) {
+            grid-column: 1 / -1;
+            border-right: 0;
+        }
+
+        .blog-card:hover {
+            background: rgba(246, 255, 231, 0.42);
+        }
+
+        .blog-card h3 {
+            max-width: 31rem;
+            margin: 0;
+            font-size: clamp(1.08rem, 1.85vw, 1.52rem);
+            font-weight: 650;
+            line-height: 1.18;
+            letter-spacing: 0;
+        }
+
+        .blog-card p {
+            max-width: 32rem;
+            margin: 0;
+            color: var(--muted);
+            font-size: clamp(0.9rem, 1.2vw, 0.98rem);
+            line-height: 1.5;
+        }
+
+        .projects-section {
+            margin-top: 0;
+            padding-top: clamp(1rem, 3vw, 2.2rem);
+            padding-bottom: clamp(3rem, 7vw, 5rem);
+            background:
+                linear-gradient(rgba(16, 32, 24, 0.055) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(16, 32, 24, 0.045) 1px, transparent 1px),
+                linear-gradient(180deg, rgba(247, 251, 242, 0.2), rgba(255, 253, 245, 0.86));
+            background-size: 42px 42px, 42px 42px, auto;
+            border-top: 1px solid rgba(16, 32, 24, 0.08);
+        }
+
+        .projects-panel {
+            width: min(1280px, 100%);
+        }
+
+        .projects-intro {
+            width: min(1120px, 100%);
+            margin: 0 auto clamp(1.4rem, 4vw, 2.4rem);
+        }
+
+        .projects-intro h2 {
+            max-width: 700px;
+            margin: 0;
+            font-family: var(--font-serif);
+            font-size: clamp(2.2rem, 5vw, 4.2rem);
+            font-weight: 400;
+            line-height: 0.98;
+            letter-spacing: 0;
+        }
+
+        .project-gallery {
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: minmax(280px, 360px);
+            gap: 1rem;
+            overflow-x: auto;
+            overscroll-behavior-inline: contain;
+            scroll-snap-type: inline mandatory;
+            padding: 0 max(1rem, calc((100vw - 1280px) / 2)) 0.8rem;
+            scrollbar-width: thin;
+        }
+
+        .project-card {
+            min-height: 430px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            scroll-snap-align: start;
+            padding: 0.9rem;
+            color: var(--ink);
+            text-decoration: none;
+            border: 1px solid rgba(16, 32, 24, 0.12);
+            border-radius: 1.15rem;
+            background: rgba(255, 255, 248, 0.78);
+            box-shadow: 0 22px 54px rgba(35, 54, 33, 0.08);
+            backdrop-filter: blur(10px);
+            transition: transform 0.28s var(--ease), border-color 0.28s var(--ease), box-shadow 0.28s var(--ease);
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(16, 32, 24, 0.24);
+            box-shadow: 0 28px 64px rgba(35, 54, 33, 0.12);
+        }
+
+        .project-preview {
+            min-height: 190px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.75rem;
+            border: 1px solid rgba(16, 32, 24, 0.08);
+            background:
+                radial-gradient(circle at 22% 18%, rgba(202, 255, 103, 0.5), transparent 11rem),
+                linear-gradient(135deg, rgba(111, 148, 52, 0.18), rgba(255, 255, 248, 0.82));
+        }
+
+        .project-preview::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(16, 32, 24, 0.055) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(16, 32, 24, 0.045) 1px, transparent 1px);
+            background-size: 22px 22px;
+            mask-image: linear-gradient(to bottom, black, transparent 78%);
+        }
+
+        .project-preview::after {
+            content: "";
+            position: absolute;
+            width: 9rem;
+            height: 9rem;
+            right: -2.5rem;
+            bottom: -3rem;
+            border: 1px solid rgba(16, 32, 24, 0.16);
+            border-radius: 999px;
+        }
+
+        .mini-ui {
+            position: absolute;
+            inset: 1rem;
+            display: grid;
+            align-content: end;
+            gap: 0.55rem;
+        }
+
+        .mini-line,
+        .mini-pill,
+        .mini-score {
+            position: relative;
+            border: 1px solid rgba(16, 32, 24, 0.12);
+            background: rgba(255, 255, 248, 0.74);
+            box-shadow: 0 12px 28px rgba(35, 54, 33, 0.08);
+        }
+
+        .mini-line {
+            height: 2.35rem;
+            border-radius: 0.55rem;
+        }
+
+        .mini-line:nth-child(2) {
+            width: 78%;
+        }
+
+        .mini-line:nth-child(3) {
+            width: 58%;
+        }
+
+        .mini-pill {
+            width: max-content;
+            padding: 0.46rem 0.62rem;
+            border-radius: 999px;
+            color: var(--ink);
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+        }
+
+        .mini-score {
+            width: 4.4rem;
+            height: 4.4rem;
+            display: grid;
+            place-items: center;
+            border-radius: 1rem;
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .project-card h3 {
+            margin: 1.1rem 0 0;
+            font-size: clamp(1.45rem, 2.7vw, 2rem);
+            line-height: 1.05;
+            letter-spacing: 0;
+        }
+
+        .project-card p {
+            margin: 0.7rem 0 1rem;
+            color: var(--muted);
+            font-size: 1rem;
+            line-height: 1.42;
+        }
+
+        .waitlist-link {
+            width: fit-content;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.62rem 0.88rem;
+            border-radius: 999px;
+            color: var(--ink);
+            background: var(--accent);
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.22s var(--ease), background 0.22s var(--ease);
+        }
+
+        .project-card:hover .waitlist-link {
+            transform: translateY(-1px);
+            background: #bff05e;
+        }
+
+        .footer {
+            position: relative;
+            padding: clamp(2.5rem, 6vw, 4.5rem) 2rem;
+            border-top: 1px solid rgba(16, 32, 24, 0.1);
+            background: rgba(255, 253, 245, 0.72);
+        }
+
+        .footer-inner {
+            width: min(1120px, 100%);
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+        }
+
+        .footer-copy {
+            margin: 0;
+            color: var(--muted);
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+        }
+
+        .social-links {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        .social-link {
+            width: 2.75rem;
+            height: 2.75rem;
+            display: inline-grid;
+            place-items: center;
+            color: var(--ink);
+            border: 1px solid rgba(16, 32, 24, 0.16);
+            border-radius: 999px;
+            background: rgba(255, 255, 248, 0.76);
+            text-decoration: none;
+            transition: transform 0.24s var(--ease), background 0.24s var(--ease), border-color 0.24s var(--ease);
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            border-color: rgba(16, 32, 24, 0.28);
+            background: rgba(202, 255, 103, 0.58);
+        }
+
+        .social-link svg {
+            width: 1.15rem;
+            height: 1.15rem;
+            display: block;
+        }
+
+        @keyframes word-pop {
+            0% { opacity: 0; transform: translateY(8px) scale(0.96); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes reveal-work-card {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 760px) {
+            .hero {
+                padding: 0.8rem;
+            }
+
+            .hero-panel {
+                min-height: auto;
+                grid-template-rows:
+                    auto
+                    auto;
+                align-content: center;
+                gap: 2.3rem;
+                padding: 0 1rem;
+            }
+
+            .top-action {
+                top: 1.25rem;
+                right: 1.25rem;
+            }
+
+            h1 {
+                font-size: clamp(2.7rem, 12vw, 4rem);
+            }
+
+            .subheading {
+                min-height: 6.8rem;
+                font-size: 1rem;
+            }
+
+            .folder-nav {
+                grid-template-columns: 1fr;
+                max-width: 280px;
+                gap: 2rem;
+                margin-top: 0;
+            }
+
+            .folder,
+            .folder:nth-child(2) {
+                min-height: 122px;
+                transform: none;
+            }
+
+            .work-section,
+            .blog-section,
+            .projects-section {
+                padding: 1.5rem 0.8rem 0.8rem;
+            }
+
+            .work-panel,
+            .blog-panel,
+            .projects-panel {
+                padding: 2rem 0;
+            }
+
+            .work-map {
+                grid-template-columns: 1fr;
+            }
+
+            .work-card,
+            .work-card:nth-of-type(1),
+            .work-card:nth-of-type(2),
+            .work-card:nth-of-type(3) {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+                transform: translateY(12px);
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .blog-card:nth-child(odd) {
+                border-right: 0;
+            }
+
+            .blog-card:last-child:nth-child(odd) {
+                grid-column: auto;
+            }
+
+            .blog-card {
+                min-height: 150px;
+            }
+
+            .project-gallery {
+                grid-auto-columns: minmax(250px, 82vw);
+                padding-inline: 0.2rem;
+            }
+
+            .project-card {
+                min-height: 390px;
+            }
+
+            .footer {
+                padding-inline: 1rem;
+            }
+
+            .footer-inner {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
+    <main>
+    <section class="hero">
+        <section class="hero-panel" aria-label="Aaina hero mockup">
+            <a href="#contact" class="top-action">Say hi!</a>
+            <div class="intro">
+                <h1>Hi I'm Aaina</h1>
+                <p class="subheading">
+                    I’m a GTM engineer and 3x founding marketer. I help early-stage startups figure out
+                    <span class="word-shell"><span class="animated-word" id="animated-word">positioning</span></span>
+                    .
+                </p>
+            </div>
 
-    <nav>
-        <div class="nav-inner">
-            <a href="#" class="nav-name">Aaina Narang</a>
-            <div class="nav-links">
-                <a href="#work">Work</a>
-                <a href="#building">Building</a>
-                <a href="#contact">Contact</a>
+            <nav class="folder-nav" aria-label="Primary sections">
+                <a class="folder" href="#work">
+                    <img src="best-pick-folder-no-text.svg" alt="" aria-hidden="true">
+                    <span>Work</span>
+                    <small>proof and results</small>
+                </a>
+                <a class="folder" href="#blog">
+                    <img src="best-pick-folder-no-text.svg" alt="" aria-hidden="true">
+                    <span>Blog</span>
+                    <small>notes and systems</small>
+                </a>
+                <a class="folder" href="#projects">
+                    <img src="best-pick-folder-no-text.svg" alt="" aria-hidden="true">
+                    <span>Projects</span>
+                    <small>things I build</small>
+                </a>
+            </nav>
+        </section>
+    </section>
+
+    <section class="work-section" id="work" aria-label="Aaina work">
+        <div class="work-panel">
+            <div class="work-intro">
+                <h2>Here is what I have worked on:</h2>
+            </div>
+
+            <div class="work-map" id="work-map">
+                <article class="work-card">
+                    <h3>DigitalAPI</h3>
+                    <ul>
+                        <li>Built founder-led LinkedIn into a repeatable distribution motion, creating <span class="outcome">400K+ impressions in 3 months</span>.</li>
+                        <li>Set up influencer-led GTM that contributed to <span class="outcome">2 enterprise deals</span>.</li>
+                        <li>Packaged webinars, newsletter, and email into steady enterprise-facing campaigns.</li>
+                    </ul>
+                </article>
+
+                <article class="work-card">
+                    <h3>Zenskar</h3>
+                    <ul>
+                        <li>Worked on SEO systems that contributed to <span class="outcome">8x organic traffic growth</span>.</li>
+                        <li>Used Reddit as a high-intent distribution channel, contributing to a <span class="outcome">$95K deal</span>.</li>
+                        <li>Supported founder-led LinkedIn growth from <span class="outcome">8K to 16K followers</span>.</li>
+                    </ul>
+                </article>
+
+                <article class="work-card">
+                    <h3>Cardboard</h3>
+                    <ul>
+                        <li>Shaped positioning, messaging, and launch narrative before the product went external.</li>
+                        <li>Built the Product Hunt motion that helped Cardboard rank <span class="outcome">#2 on launch day</span>.</li>
+                        <li>Turned product context into launch assets, founder notes, and community-ready posts.</li>
+                    </ul>
+                </article>
             </div>
         </div>
-    </nav>
+    </section>
 
-    <main>
-
-        <!-- HERO -->
-        <section class="hero">
-            <div class="container hero-grid">
-                <div class="hero-text">
-                    <p class="label">GTM . B2B SaaS . AI-Native Execution</p>
-                    <h1>I build GTM from scratch for B2B SaaS companies.</h1>
-                    <p class="hero-body">
-                        I've spent the last few years sitting inside founders' offices, owning channels end to end, and figuring out what actually moves the needle. Not just content. Not just campaigns. The full thing: strategy, execution, and the messy middle where most things break.
-                    </p>
-                    <p class="hero-body">
-                        I work at the intersection of marketing, ops, and AI-native execution. I use Claude, HeyReach, Clay, PhantomBuster, and a growing stack of tools to build systems that scale without adding headcount.
-                    </p>
-                    <div class="hero-cta">
-                        <a href="mailto:aainanarang2911@gmail.com" class="btn-primary">Start a project</a>
-                        <a href="https://x.com/aaina_narang" target="_blank" rel="noopener" class="btn-outline">Say hi on X</a>
-                    </div>
-                </div>
-                <div class="hero-photo">
-                    <img src="photo.jpg" alt="Aaina Narang" />
-                </div>
+    <section class="projects-section" id="projects" aria-label="Aaina projects">
+        <div class="projects-panel">
+            <div class="projects-intro">
+                <h2>Stack I'm Cooking</h2>
             </div>
-        </section>
 
-        <!-- HOW I WORK -->
-        <section class="how-section">
-            <div class="container">
-                <p class="label">How I work</p>
-                <div class="how-grid">
-                    <div class="how-item">
-                        <span class="how-icon">◆</span>
-                        <p>I build the strategy and execute it myself</p>
+            <div class="project-gallery">
+                <article class="project-card">
+                    <div class="project-preview" aria-hidden="true">
+                        <div class="mini-ui">
+                            <span class="mini-pill">ICP fit: high</span>
+                            <span class="mini-line"></span>
+                            <span class="mini-line"></span>
+                        </div>
                     </div>
-                    <div class="how-item">
-                        <span class="how-icon">◆</span>
-                        <p>I use AI across every workflow so I move faster than a team of three</p>
+                    <div>
+                        <h3>Lead Scoring Agent</h3>
+                        <p>Ranks inbound and outbound accounts by intent, fit, urgency, and the next best action.</p>
+                        <a class="waitlist-link" href="mailto:aainanarang2911@gmail.com?subject=Waitlist%20for%20Lead%20Scoring%20Agent">Join the waitlist</a>
                     </div>
-                    <div class="how-item">
-                        <span class="how-icon">◆</span>
-                        <p>I get close to the product and the founder before I touch anything external</p>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-preview" aria-hidden="true">
+                        <div class="mini-ui">
+                            <span class="mini-score">42</span>
+                            <span class="mini-line"></span>
+                            <span class="mini-line"></span>
+                        </div>
                     </div>
-                    <div class="how-item">
-                        <span class="how-icon">◆</span>
-                        <p>I own numbers, not just deliverables</p>
+                    <div>
+                        <h3>Founder Brand Studio</h3>
+                        <p>Turns founder calls, notes, and hot takes into sharp posts, essays, and launch narratives.</p>
+                        <a class="waitlist-link" href="mailto:aainanarang2911@gmail.com?subject=Waitlist%20for%20Founder%20Brand%20Studio">Join the waitlist</a>
                     </div>
-                    <div class="how-item">
-                        <span class="how-icon">◆</span>
-                        <p>I document everything so nothing lives only in my head</p>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-preview" aria-hidden="true">
+                        <div class="mini-ui">
+                            <span class="mini-pill">cluster ready</span>
+                            <span class="mini-line"></span>
+                            <span class="mini-line"></span>
+                        </div>
                     </div>
-                </div>
+                    <div>
+                        <h3>SEO Brief Builder</h3>
+                        <p>Maps buyer intent, competitors, POV, internal links, and CTA angles before a draft begins.</p>
+                        <a class="waitlist-link" href="mailto:aainanarang2911@gmail.com?subject=Waitlist%20for%20SEO%20Brief%20Builder">Join the waitlist</a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-preview" aria-hidden="true">
+                        <div class="mini-ui">
+                            <span class="mini-pill">speaker matched</span>
+                            <span class="mini-line"></span>
+                            <span class="mini-line"></span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Webinar Pipeline Kit</h3>
+                        <p>Finds speakers, builds the promo plan, scores registrants, and writes follow-up paths.</p>
+                        <a class="waitlist-link" href="mailto:aainanarang2911@gmail.com?subject=Waitlist%20for%20Webinar%20Pipeline%20Kit">Join the waitlist</a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-preview" aria-hidden="true">
+                        <div class="mini-ui">
+                            <span class="mini-score">8.7</span>
+                            <span class="mini-line"></span>
+                            <span class="mini-line"></span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Launch Room</h3>
+                        <p>A command center for Product Hunt, founder posts, community drops, and partner asks.</p>
+                        <a class="waitlist-link" href="mailto:aainanarang2911@gmail.com?subject=Waitlist%20for%20Launch%20Room">Join the waitlist</a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-preview" aria-hidden="true">
+                        <div class="mini-ui">
+                            <span class="mini-pill">signals found</span>
+                            <span class="mini-line"></span>
+                            <span class="mini-line"></span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Community Signal Finder</h3>
+                        <p>Scans Reddit, Slack notes, and sales calls for language buyers already use.</p>
+                        <a class="waitlist-link" href="mailto:aainanarang2911@gmail.com?subject=Waitlist%20for%20Community%20Signal%20Finder">Join the waitlist</a>
+                    </div>
+                </article>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- COMPANIES & RESULTS -->
-        <section id="work" class="work-section">
-            <div class="container">
-                <p class="label">Companies &amp; Results</p>
-                <div class="work-grid">
-                    <div class="work-card">
-                        <h3>DigitalAPI</h3>
-                        <p class="work-scope">Founder branding, influencer program, webinars, newsletter, email</p>
-                        <p class="work-result">400K+ LinkedIn impressions in 3 months. 2 enterprise deals from influencer collabs.</p>
-                    </div>
-                    <div class="work-card">
-                        <h3>Zenskar</h3>
-                        <p class="work-scope">SEO, founder branding, webinars, Reddit, community, marketplace listings</p>
-                        <p class="work-result">8x organic traffic growth. $95K deal from Reddit. 8K to 16K LinkedIn followers.</p>
-                    </div>
-                    <div class="work-card">
-                        <h3>Cardboard</h3>
-                        <p class="work-scope">GTM strategy and Product Hunt launch</p>
-                        <p class="work-result">Ranked #2 on launch day.</p>
-                    </div>
-                    <div class="work-card">
-                        <h3>Poshn</h3>
-                        <p class="work-scope">LinkedIn content for the founder</p>
-                        <p class="work-result">Weekly content calendar, ongoing.</p>
-                    </div>
-                </div>
+    <section class="blog-section" id="blog" aria-label="Aaina blog">
+        <div class="blog-panel">
+            <div class="blog-intro">
+                <h2>Thoughts on GTM, founder brand, distribution, and positioning.</h2>
             </div>
-        </section>
 
-        <!-- CURRENTLY BUILDING -->
-        <section id="building" class="building-section">
-            <div class="container">
-                <p class="label">Currently building</p>
-                <div class="building-grid">
-                    <div class="building-card">
-                        <h3>GTM, Honestly</h3>
-                        <p>A daily Twitter article series on full-funnel B2B GTM. Article 1 hit 100K impressions with 187 followers.</p>
-                    </div>
-                    <div class="building-card">
-                        <h3>Dense LinkedIn infographics</h3>
-                        <p>On GTM, search, and buyer psychology.</p>
-                    </div>
-                    <div class="building-card">
-                        <h3>This website</h3>
-                        <p>You're looking at it.</p>
-                    </div>
-                </div>
+            <div class="blog-grid">
+                <a class="blog-card" href="article.html?post=webinars">
+                    <h3>How are we generating multiple $100K+ deals through webinars?</h3>
+                    <p>One of the highest-converting GTM channels I’ve worked on for B2B SaaS is webinars. Here’s the playbook that generated two $100K+ pipeline opportunities.</p>
+                </a>
+                <a class="blog-card" href="article.html?post=influencer-collabs">
+                    <h3>How are we closing enterprise deals through influencer collaborations?</h3>
+                    <p>Influencer marketing in B2B SaaS is about finding people your buyers already trust, then staying ready to convert interest the moment it shows up.</p>
+                </a>
+                <a class="blog-card" href="article.html?post=ai-positioning">
+                    <h3>How to position your AI product to get first 500 customers?</h3>
+                    <p>The pace of what’s getting built in AI is insane. One of the best ways to differentiate is winning on positioning.</p>
+                </a>
+                <a class="blog-card" href="article.html?post=founder-branding">
+                    <h3>Founder branding is the cheapest sales channel you’ll ever own</h3>
+                    <p>Founder brand is a system for making the right people aware of you, your conviction, and the category-level takes only you can say.</p>
+                </a>
+                <a class="blog-card" href="article.html?post=seo-b2b-saas">
+                    <h3>How did we go from 0 to 5000 monthly organic traffic?</h3>
+                    <p>For six months, we focused on non-branded search, buyer-intent keywords, and content that reached people who had never heard of us.</p>
+                </a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- OUTSIDE WORK -->
-        <section class="outside-section">
-            <div class="container">
-                <p class="label">Outside work</p>
-                <p class="outside-text">
-                    I care about fashion, fitness, and how things look. I think aesthetics and strategy are more related than most marketers admit. I'm based in Bangalore. I write better after a good workout and worse after a late night. Both happen often.
-                </p>
+    <footer class="footer" id="contact" aria-label="Contact Aaina">
+        <div class="footer-inner">
+            <p class="footer-copy">Say hi, send a note, or follow along.</p>
+
+            <div class="social-links">
+                <a class="social-link" href="https://x.com/aaina_narang" target="_blank" rel="noreferrer" aria-label="Aaina on X">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill="currentColor" d="M17.53 3h3.14l-6.86 7.84L21.88 21h-6.32l-4.95-6.47L4.95 21H1.8l7.34-8.39L1.4 3h6.48l4.47 5.91L17.53 3Zm-1.1 16.21h1.74L6.93 4.7H5.06l11.37 14.51Z"/>
+                    </svg>
+                </a>
+
+                <a class="social-link" href="https://www.linkedin.com/in/aaina29/" target="_blank" rel="noreferrer" aria-label="Aaina on LinkedIn">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill="currentColor" d="M5.34 7.43A2.06 2.06 0 1 1 5.32 3.3a2.06 2.06 0 0 1 .02 4.13ZM3.55 21h3.55V8.9H3.55V21Zm5.85 0h3.55v-6.78c0-1.8.83-2.86 2.25-2.86 1.3 0 1.92.87 1.92 2.86V21h3.55v-7.85c0-3.35-1.79-4.91-4.18-4.91-1.92 0-2.78 1.06-3.26 1.8h-.05V8.9H9.4V21Z"/>
+                    </svg>
+                </a>
+
+                <a class="social-link" href="mailto:aainanarang29@gmail.com" aria-label="Email Aaina">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4.75 6.75h14.5v10.5H4.75z"/>
+                        <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="m5.25 7.25 6.75 5.2 6.75-5.2"/>
+                    </svg>
+                </a>
             </div>
-        </section>
-
-        <!-- CONTACT -->
-        <section id="contact" class="contact-section">
-            <div class="container">
-                <p class="label">Let's work together</p>
-                <p class="contact-body">
-                    If you're building something in B2B SaaS and need someone who can own the GTM motion, not just a piece of it, let's talk.
-                </p>
-                <div class="contact-links">
-                    <a href="mailto:aainanarang2911@gmail.com">aainanarang2911@gmail.com</a>
-                    <a href="https://linkedin.com/in/aaina-narang" target="_blank" rel="noopener">LinkedIn</a>
-                    <a href="https://x.com/aaina_narang" target="_blank" rel="noopener">Twitter</a>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Aaina Narang. Built with intention.</p>
         </div>
     </footer>
+    </main>
 
+    <script>
+        const words = [
+            "positioning",
+            "founder brand",
+            "growth loops",
+            "SEO",
+            "events",
+            "PR",
+            "launches",
+            "content systems"
+        ];
+
+        const animatedWord = document.querySelector("#animated-word");
+        let index = 0;
+
+        window.setInterval(() => {
+            index = (index + 1) % words.length;
+            animatedWord.classList.remove("is-changing");
+            window.requestAnimationFrame(() => {
+                animatedWord.textContent = words[index];
+                animatedWord.classList.add("is-changing");
+            });
+        }, 1450);
+
+        const workMap = document.querySelector("#work-map");
+
+        if (workMap) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        workMap.classList.add("is-visible");
+                        observer.unobserve(workMap);
+                    }
+                });
+            }, { threshold: 0.32 });
+
+            observer.observe(workMap);
+        }
+    </script>
 </body>
 </html>

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aaina Narang Article</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f7fbf2;
+            --paper: #fffff8;
+            --ink: #102018;
+            --muted: #657168;
+            --line: rgba(16, 32, 24, 0.12);
+            --accent: #caff67;
+            --font-body: "DM Sans", system-ui, sans-serif;
+            --font-mono: "DM Mono", monospace;
+            --font-serif: "Instrument Serif", Georgia, serif;
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            min-height: 100%;
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--font-body);
+            color: var(--ink);
+            background:
+                radial-gradient(circle at 18% 78%, rgba(111, 148, 52, 0.1), transparent 18rem),
+                linear-gradient(180deg, var(--bg), #fffdf5);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.28;
+            background-image:
+                linear-gradient(rgba(16, 32, 24, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(16, 32, 24, 0.03) 1px, transparent 1px);
+            background-size: 44px 44px;
+            mask-image: linear-gradient(to bottom, black, transparent 92%);
+        }
+
+        .shell {
+            width: min(880px, calc(100% - 2rem));
+            margin: 0 auto;
+            padding: clamp(1rem, 3vw, 2rem) 0 clamp(3rem, 7vw, 5rem);
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.4rem 0 clamp(2.5rem, 7vw, 5rem);
+        }
+
+        .back-link,
+        .original-link {
+            color: var(--ink);
+            font-family: var(--font-mono);
+            font-size: 0.86rem;
+            text-decoration: none;
+        }
+
+        .back-link:hover,
+        .original-link:hover {
+            text-decoration: underline;
+            text-underline-offset: 0.2em;
+        }
+
+        .article-head {
+            padding-bottom: clamp(1.4rem, 4vw, 2.5rem);
+            border-bottom: 1px solid var(--line);
+        }
+
+        h1 {
+            max-width: 780px;
+            margin: 0;
+            font-family: var(--font-serif);
+            font-size: clamp(2.15rem, 4.4vw, 3.8rem);
+            font-weight: 400;
+            line-height: 0.96;
+            letter-spacing: 0;
+        }
+
+        .dek {
+            max-width: 690px;
+            margin: 1.15rem 0 0;
+            color: var(--muted);
+            font-size: clamp(1rem, 1.8vw, 1.22rem);
+            line-height: 1.58;
+        }
+
+        .article-body {
+            padding-top: clamp(1.2rem, 4vw, 2.4rem);
+        }
+
+        .article-body h2 {
+            margin: clamp(2rem, 5vw, 3rem) 0 0.75rem;
+            font-size: clamp(1.18rem, 2vw, 1.5rem);
+            line-height: 1.2;
+            letter-spacing: 0;
+        }
+
+        .article-body p {
+            margin: 0 0 1rem;
+            color: var(--muted);
+            font-size: clamp(1rem, 1.45vw, 1.1rem);
+            line-height: 1.72;
+        }
+
+        .article-body blockquote {
+            margin: 1.4rem 0;
+            padding-left: 1rem;
+            border-left: 3px solid var(--accent);
+            color: var(--ink);
+        }
+
+        .article-body blockquote p {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        mark {
+            color: var(--ink);
+            background: linear-gradient(180deg, transparent 50%, rgba(202, 255, 103, 0.7) 50%);
+            border-radius: 0.22rem;
+            padding: 0 0.06em;
+        }
+
+        .missing {
+            margin-top: 2rem;
+            padding: 1rem 0;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+
+        @media (max-width: 640px) {
+            .topbar {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="shell">
+        <nav class="topbar" aria-label="Article navigation">
+            <a class="back-link" href="hero-green-folder-mockup.html#blog">← Back to thoughts</a>
+            <a class="original-link" id="original-link" href="#" target="_blank" rel="noreferrer">Read on X</a>
+        </nav>
+
+        <article>
+            <header class="article-head">
+                <h1 id="article-title"></h1>
+                <p class="dek" id="article-dek"></p>
+            </header>
+
+            <div class="article-body" id="article-body"></div>
+        </article>
+    </main>
+
+    <script>
+        const posts = {
+            "webinars": {
+                title: "How are we generating multiple $100K+ deals through webinars?",
+                dek: "One of the highest-converting GTM channels I’ve worked on for B2B SaaS is webinars. A live room with qualified decision-makers can become pipeline if the system around it is sharp.",
+                source: "https://x.com/aaina_narang/status/2032312354512519673",
+                body: [
+                    ["p", "One of the highest-converting GTM channels I've worked on for B2B SaaS is webinars."],
+                    ["p", "A webinar puts you in a live room with highly qualified decision-makers who show up because they wanted to."],
+                    ["p", "So let me share the webinar playbook that generated two $100K+ pipeline opportunities for us in a span of 3 months."],
+                    ["p", "We didn't run any paid ads to boost the webinar. The number of registrations was 150-200 for almost all the webinars we’ve done, and they were highly qualified registrants."],
+                    ["p", "Quick note before we get into it: everything I'm about to share is built around bringing in an external speaker. You can absolutely run this in-house too, with your own team or founders."],
+                    ["h2", "Finding and coordinating with your speaker"],
+                    ["p", "The whole thing lives or dies here."],
+                    ["p", "Find influential people across your target group. Your ICP already has people they follow, trust, and genuinely want to hear from. Your job is to find that person and put them on your stage."],
+                    ["p", "Someone hyper-relevant to the exact problem your ICP is dealing with right now."],
+                    ["p", "Start with research. LinkedIn, Google, listicles in their niche. I use Claude to pull context together fast: their recent talking points, their positioning, what they actually care about."],
+                    ["p", "Because when you reach out, you're not asking for a favour. You're offering them a stage in front of their exact audience. Know them well enough to make that obvious."],
+                    ["p", "Reach out through every door available: LinkedIn DM, email, a mutual, their team. Whatever gets you in."],
+                    ["p", "Once they say yes, align on the topic, the talking points, and the angle together."],
+                    ["h2", "Spreading the word"],
+                    ["p", "Four things should run simultaneously, and you kick this off at least two weeks before the webinar."],
+                    ["p", "Email: 2-3 sequenced emails to your nurtured list. No list yet? Go cold but be surgical. Right titles, right ICP only."],
+                    ["p", "LinkedIn, and this is the big one: don't just post “register now” and hope for the best. Run at least a 2-week content campaign around the topic of the webinar."],
+                    ["p", "Valuable posts. No hard sell. Then look at who's liking and commenting on those posts and DM them directly."],
+                    ["blockquote", "Hey, saw you engaged with our post on X. We're actually hosting a live session on exactly this with [Speaker]. Would love for you to join."],
+                    ["p", "Warm outreach converts so much better than a cold registration link."],
+                    ["p", "Speaker channels: ask your speaker what they can amplify it through. Their LinkedIn, email list, newsletter. Co-promotion is free reach into a warm, already-trusting audience."],
+                    ["p", "Communities: 3-4 relevant communities where your ICP actually hangs out. Value-first framing always, not a drop-link-and-run."],
+                    ["h2", "Pre-webinar"],
+                    ["p", "A week before the webinar, go through your registration list. Identify the people who look like real future customers."],
+                    ["p", "Have your speaker personally reach out to them."],
+                    ["blockquote", "Hey! Saw you registered, so excited. Is there anything specific you'd like me to cover?"],
+                    ["p", "That's it. Those people will show up. Every single time. This is how we consistently hit a 2:1 registrant-to-attendance ratio."],
+                    ["p", "Also make sure your messaging is painfully specific. Talk directly to what your ICP is losing sleep over. If it's banking leaders, tell them how to increase revenue. If it’s retail enterprises, show them the agentic AI use cases blowing up right now. Use their language."],
+                    ["p", "Set up your reminder sequence: the day before, one hour before, and right when you kick off the webinar. Ask registrants what they want covered in each reminder. It gets them invested before they even join."],
+                    ["h2", "During the webinar"],
+                    ["p", "Welcome everyone warmly as they join. Call people out by name if you can see them in chat."],
+                    ["p", "Throw a question into the room in the first 5 minutes: “What's your biggest challenge with X right now?” Get them typing early."],
+                    ["p", "A warmed-up audience stays till the end."],
+                    ["h2", "Post-webinar: this is where the money actually is"],
+                    ["p", "The webinar gets them in the room. What you do after is what generates revenue."],
+                    ["p", "Attended and engaged: personal follow-up sequence. Real emails, not drips. Move them toward a call."],
+                    ["p", "Registered but didn't show: send the recording with a softer ask. These people had intent, life just got in the way."],
+                    ["p", "No response after 2 weeks: hand to sales for calls if that fits your motion, then move to nurture."],
+                    ["p", "The recording: upload to YouTube. Build a simple landing page with a form to access it. Everyone who fills that form has active intent."],
+                    ["p", "Clips: cut 5-7 short clips from the session. Post across LinkedIn, Twitter, and YouTube Shorts. One webinar just became two weeks of content."],
+                    ["p", "The event is the opening, and the follow-up is where you get the deals."],
+                    ["p", "One webinar done right can feed your pipeline for a month."]
+                ]
+            },
+            "influencer-collabs": {
+                title: "How are we closing enterprise deals through influencer collaborations?",
+                dek: "Influencer marketing in B2B SaaS is about finding people your buyers already trust and co-creating content that moves their audience toward you.",
+                source: "https://x.com/aaina_narang/status/2049370093189271687?s=20",
+                body: [
+                    ["p", "Influencer marketing in B2B SaaS is all about finding people your buyers already trust."],
+                    ["p", "It can be CTOs, Product Leaders, or Finance folks that you need to co-create content with."],
+                    ["p", "I built this channel from scratch for two different companies. We ended up getting inbound from companies we could have never reached on our own, and eventually got multiple enterprise deals in our pipeline."],
+                    ["h2", "Step 1: Find the right influencers"],
+                    ["p", "Start with bucketing your ICP. Let's say you sell to technical decision-makers: CTOs, Product Leaders, Enterprise Architects. Build buckets around those exact titles and look for influencers within each bucket."],
+                    ["p", "Think former CTOs who now create content, Heads of Product with large followings, and people whose audience is your buyer."],
+                    ["p", "Search listicles like “top CTOs to follow on LinkedIn.” Follow, like, and engage with their posts, and your feed will start surfacing more of them."],
+                    ["p", "Then check the quality of comments on their posts. Are your actual buyers engaging? That's the signal."],
+                    ["p", "We work with both micro influencers, around 5K-20K followers, and macro influencers, around 50K+. Macro gets you reach. Micro gets you quality leads. The comments on micro influencer posts are often more relevant."],
+                    ["h2", "Step 2: Reach out the right way"],
+                    ["p", "Cold DMs rarely work here. Relationship-building does."],
+                    ["p", "Three ways we approach outreach: check if they have a contact form, email, or manager and reach out directly; look for mutual connections and ask for a warm intro; or write an article or post featuring them, then DM. Now you're not a stranger, you're someone who already gave them value."],
+                    ["p", "When you do reach out, the pitch is simple: we've been following your work, here's what we do, and we'd love to co-create content that's useful for both our audiences."],
+                    ["h2", "Step 3: Co-create the content"],
+                    ["p", "Before you pitch a content format, do your homework on the influencer first."],
+                    ["p", "Are they active on LinkedIn or Twitter? Do they have a newsletter or an email list? Are they a better writer or a better speaker? What's getting them the most engagement? Then pick your format around their strengths."],
+                    ["p", "We ran two formats."],
+                    ["p", "Format 1: collaborative LinkedIn post. We co-created a post with the influencer on a topic their audience actually cares about. Subtle product mention, with the visual consistent with their brand voice."],
+                    ["p", "Exactly 8 qualified leads saw that post, went to our page, and booked a demo directly."],
+                    ["p", "Format 2: webinars. We hosted a live session with the influencer as the main speaker. They pulled their audience in. We facilitated and showed up as the brand behind the conversation."],
+                    ["p", "During the live, someone dropped a comment saying they wanted to book a demo. We eventually closed that deal."],
+                    ["h2", "Step 4: What happens after the post goes live"],
+                    ["p", "This is the most crucial part."],
+                    ["p", "The moment a collaboration post goes live, we start working it. Engage with every comment immediately."],
+                    ["p", "Use tools like HeyReach to scrape LinkedIn likes from the post. Filter for relevant profiles: who in those likes matches your ICP?"],
+                    ["p", "Have your founder or a senior team member reach out personally: “saw you engaged with X's post, would love to know your perspective.”"],
+                    ["p", "You can layer an email sequence on top of this, but LinkedIn outreach moves faster here."],
+                    ["h2", "The metrics we track"],
+                    ["p", "Leading indicators: impressions on the collaboration content, engagement rate, and quality of comments. Are these actual buyers?"],
+                    ["p", "Lagging indicators: demos booked from the campaign, pipeline generated, and conversions."],
+                    ["p", "Comment quality is one of the most interesting metrics. 500 likes with shallow comments is not worth more than 50 likes with comments from CTOs asking “how do I learn more?”"],
+                    ["p", "We closed two enterprise deals from influencer collaborations in a span of 3 months: one from a LinkedIn post, one from a live webinar."],
+                    ["p", "What helped the most was picking the right people, letting them lead the conversation, and staying ready to convert interest the moment it showed up."]
+                ]
+            },
+            "ai-positioning": {
+                title: "How to position your AI product to get first 500 customers?",
+                dek: "A practical positioning working session for early AI products: what you’re replacing, who you’re really for, and the category game you’re choosing.",
+                source: "https://x.com/aaina_narang/status/2034875778631180377?s=20",
+                body: [
+                    ["p", "The pace of what's getting built in AI is insane. And one of the best ways to differentiate is winning on positioning."],
+                    ["p", "I've spent the last couple of years positioning early-stage products across B2B and B2C SaaS. So I pulled together what actually applies to early AI products and ran it on a few I've worked with."],
+                    ["p", "Now pull up a doc and let's start. This is a working session."],
+                    ["h2", "Start with the most honest question you'll ask yourself"],
+                    ["p", "What would your customer do if your product didn't exist?"],
+                    ["p", "A tool they're already paying for, a person they'd hire, or a process they'd suffer through. Write it down."],
+                    ["p", "This matters because your positioning has to be better than that specific thing."],
+                    ["p", "For instance, Harvey's real competition was associates manually reviewing contracts until midnight. Knowing that changed how they priced, how they pitched, and who they went after first."],
+                    ["h2", "Then figure out what you actually have"],
+                    ["p", "Now that you know what you're up against, ask what your product does that the workaround genuinely cannot."],
+                    ["p", "Make a list of specifics. If the spreadsheet can also do it, it doesn't go on the list. If your competitor shipped it last month, think hard about whether it belongs. You're looking for things that are actually yours."],
+                    ["p", "Cursor's positioning, for instance, was clear: it understands your entire codebase, suggests full functions in context, and rewrites on instruction."],
+                    ["p", "Now run each thing on your list through a simple chain: feature, benefit, and outcome for a human."],
+                    ["p", "Then go talk to your five customers and check if the outcomes you wrote match what they actually complained about. If they don't line up, something's off. Either your list is wrong or you're talking to the wrong people."],
+                    ["h2", "Get specific about who you're actually for"],
+                    ["p", "“Developers,” “startups,” or “anyone building with AI” is definitely not an answer."],
+                    ["p", "Which developers, doing what, at what stage, and with what specific frustration that is costing them real time or real money this week?"],
+                    ["p", "You need to go narrow here. It feels counterintuitive. It feels like you're leaving people out. But you're making it easy for the right people to self-select in immediately."],
+                    ["p", "Geoffrey Moore talks about this in Crossing the Chasm. You win the broader market by winning one specific beachhead first. The beachhead is a real person with a real problem who will tell three other people the moment you solve it."],
+                    ["p", "Harvey's beachhead was BigLaw associates doing document review before depositions. That's a moment, not a demographic."],
+                    ["blockquote", "This is most valuable for ______ who are currently struggling with ______."],
+                    ["p", "Then go validate it. Post in one community where that person hangs out. Write one tweet describing the problem in their language. Watch who responds."],
+                    ["h2", "Name the game you're playing"],
+                    ["p", "This is the category question."],
+                    ["p", "It tells your buyer what to compare you against and what to expect before they even sign up. Get it right and the rest of your positioning clicks into place fast."],
+                    ["p", "Some products need a new category because the existing options are so different that comparisons would confuse people. Perplexity didn't call itself a search engine but an answer engine. That one word change shifted the user's entire expectation."],
+                    ["blockquote", "We are a ______ for ______."],
+                    ["p", "Category. Specific person. One line. Read it back. If it sounds like it could be anyone's tagline, it's not specific enough yet."],
+                    ["h2", "Now play with the words"],
+                    ["p", "You've done the thinking, now try five taglines. Honestly, just mess around. Something that makes a person in your ICP think “this is for me” the moment they read it."],
+                    ["p", "Try a two sentence version of what you do and read it out loud."],
+                    ["p", "Try the full blurb: problem, who has it, what you do, what changes for them. Four sentences max."],
+                    ["p", "Show it to someone who fits your ICP. Watch their face when they read it. If they lean in and want to know more, you're close. If they ask “but what does it actually do,” go back to the outcomes exercise."],
+                    ["p", "Keep talking to people throughout this. Stay close to them and update the narrative."],
+                    ["p", "Start specific and the rest follows."]
+                ]
+            },
+            "founder-branding": {
+                title: "Founder branding is the cheapest sales channel you'll ever own",
+                dek: "What I’d hand any technical founder before they post their first thing: a system for making conviction, taste, and category thinking legible to buyers.",
+                source: "https://x.com/aaina_narang/status/2034159289380593712?s=20",
+                body: [
+                    ["p", "I've spent 4 years running branding for B2B SaaS companies. Almost every founder I've worked with said the same thing on the kickoff call: I want the brand but I don't want to be hyperactive on socials, please don't ask me to be a different person."],
+                    ["p", "So I built a system. Then I ran it across enough accounts that the patterns started showing up: 5 founders, millions of combined impressions, multiple mid six-figure pipeline traceable directly to brand."],
+                    ["p", "I am sharing what I'd hand any technical founder before they post their first thing."],
+                    ["h2", "Why even bother?"],
+                    ["p", "Honestly, founder branding is the cheapest sales channel you'll ever own. The pipeline you generate through it doesn't carry an absurd CAC. The brand you build now is what hires for you in 2 years and gets your next round taken seriously. Skip it and it becomes the tax you pay later."],
+                    ["p", "You have 10 competitors shipping similar features. You'll have 50 by next year. Half of them will raise more than you. The product moat in B2B SaaS gets thinner every quarter."],
+                    ["p", "The thing that doesn't compress is you."],
+                    ["p", "The way you think about the problem, the conviction behind the choices you've made, the standards you hold the team to, the categorical takes only you would say out loud. That's the differentiator nobody can clone."],
+                    ["p", "Buyers don't just buy software anymore. They buy the founder behind it. They buy the bet that the person building this thing is going to keep building it long after they sign the contract."],
+                    ["p", "Founder branding is how that bet becomes legible to the people writing the checks."],
+                    ["h2", "How to think about it"],
+                    ["p", "More than thought leadership, it is a system for making the right people aware of you. The cringe disappears the moment you stop performing and start being yourself."],
+                    ["p", "The first move is positioning yourself: April Dunford's framework, applied to your voice instead of your product."],
+                    ["blockquote", "Who are the alternatives to following you? What’s unique about your perspective? Who specifically benefits from it?"],
+                    ["p", "Sit with that for 30 minutes alone before you write anything."],
+                    ["h2", "How to do it across multiple channels without it eating your week"],
+                    ["p", "Each channel does a different job. Please stop trying to make one channel do everything for you."],
+                    ["p", "Twitter is where your buyers, peers, operators and investors live. It builds reputation among insiders. Patrick Collison, Guillermo Rauch, Tobi Lütke all build here. Be short, opinionated and frequent here. Write Twitter articles once in a while for deep dives."],
+                    ["p", "LinkedIn builds pipeline. Different post types work here than on Twitter. Longer, more operational, named-audience hooks in line one. Engage with other people and most importantly your prospects. You might want to call LinkedIn cringe, but it still does its job."],
+                    ["p", "Substack and long-form is where people who already follow you go to go deeper. It builds trust at depth. One piece a month is enough."],
+                    ["p", "Podcasts are where you borrow credibility from established audiences. Go on the right five. Have someone reach out on your behalf. If you get inbound, even better."],
+                    ["p", "The mechanic that makes this possible without 5x the writing time: write once, adapt four times."],
+                    ["p", "One piece of thinking ships as a Twitter thread, a LinkedIn post, a Substack expansion, and a 90-second clip-worthy take you can land in podcast intros for the next quarter."],
+                    ["h2", "What to expect"],
+                    ["p", "Month 1 will look like nothing is moving. You might want to quit. But the inflection comes after at least a month or two."],
+                    ["p", "Patterns I see across every account I've run: operational posts like “here's how we evaluate X” and grounded contrarian takes like “most teams approach Y like this, we do it differently” consistently overperform."],
+                    ["p", "Also remember: viral takes pull 50K impressions and 0 inbound, but the niche take pulls 5K impressions and 3 conversations."],
+                    ["p", "The first inbound is almost always from someone who's been silently watching for 6+ weeks. It's the cumulative effect of consistent posts plus a profile that signals “this person solves my problem.”"],
+                    ["h2", "What to do this week"],
+                    ["p", "Figure out if you seriously want to commit to it. Hire someone to make it seamless for you, but don't lose your hold over it."],
+                    ["p", "Sit with the positioning exercise for 30 minutes. Just that."],
+                    ["p", "And never forget to distribute, because the brand is only built when one piece of clear thinking gets distributed everywhere the right people are."]
+                ]
+            },
+            "seo-b2b-saas": {
+                title: "How did we go from 0 to 5000 monthly organic traffic?",
+                dek: "For six months, we focused on non-branded search, buyer-intent keywords, and content that reached people who had never heard of us.",
+                source: "https://x.com/aaina_narang/status/2033509670699295146?s=20",
+                body: [
+                    ["p", "We had zero organic presence. Almost all of our traffic was branded because of social presence and founder branding."],
+                    ["p", "So for six months, we focused on non-branded search, buyer intent keywords, and content that reached people who had never heard of us."],
+                    ["p", "Three months later, organic became one of the highest-converting acquisition channels. Six months later, we were at 5000 monthly visits and growing."],
+                    ["p", "This is the full story: what drove the traffic, what turned it into pipeline, and how we use AI to do it faster without losing the edge that makes it work."],
+                    ["h2", "We ignored top-of-funnel for the first 90 days"],
+                    ["p", "The first 8 pieces we published were all bottom-of-funnel."],
+                    ["p", "Comparison pages. Use-case specific landing pages. “[Our category] for [specific ICP vertical]” content."],
+                    ["p", "Things people search when they already know they have a problem and are actively evaluating solutions."],
+                    ["p", "Those 8 pages drove 6 demo requests in month one. The rest of the site combined drove 2."],
+                    ["p", "Bottom-of-funnel content converts at 3-5x the rate of awareness content."],
+                    ["h2", "Intent over volume, every time"],
+                    ["p", "A keyword with 150 monthly searches from a decision maker actively evaluating your category is worth more than 15,000 searches from someone doing background reading."],
+                    ["p", "Before we wrote anything, we asked: who is searching this, and what are they doing next? If the answer wasn't “trying to solve a problem our product fixes,” we skipped it. It didn't matter how good the volume looked."],
+                    ["p", "One blog targeting a specific integration use case, 210 monthly searches, almost no competition, drove 4 demo requests in its first month."],
+                    ["p", "It ranked on page one in six weeks because nobody else had written it properly."],
+                    ["p", "Specificity ranks and it converts."],
+                    ["h2", "CRO needs your attention equally"],
+                    ["p", "Here's what we fixed that moved the needle."],
+                    ["p", "One CTA per blog, directly tied to the topic. If someone just read a blog about email deliverability, the CTA isn't “book a demo.” It's “get the checklist we use for every new domain setup.” Relevant, specific, low friction."],
+                    ["p", "Exit intent on high-traffic blogs with a content upgrade. Not a popup that fires 2 seconds in. Something that triggers when someone has actually read the blog and is about to leave."],
+                    ["p", "Internal linking from every blog to a bottom-of-funnel page. Every awareness blog should have a natural path to a conversion page. Most blogs have zero internal link strategy."],
+                    ["p", "These three changes took our blogs from 0.4% to 2.1% conversion rate. Same traffic, but 5x the leads."],
+                    ["h2", "How I use Claude for SEO and where I don't let it take over"],
+                    ["p", "I use Claude for almost every part of the research and drafting process now: competitor gap analysis, cluster mapping, outline building, first drafts of supporting blogs."],
+                    ["p", "But the blogs that actually rank and get shared need something Claude can't generate on its own: a real point of view."],
+                    ["p", "Generic AI content is everywhere. Google is getting better at identifying it. More importantly, your buyers are getting better at ignoring it."],
+                    ["p", "What works is using Claude to do the heavy lifting on structure and research, then injecting your own experience, your own numbers, your own opinion into every section."],
+                    ["p", "Use AI to go faster. Use your experience to go deeper. That combination is what thought leadership SEO actually looks like in 2025."],
+                    ["h2", "What thought leadership does for SEO that tactics alone can't"],
+                    ["p", "The blogs that drove the most pipeline weren't always the ones ranking #1. Some of them barely ranked at all."],
+                    ["p", "They got forwarded in Slack channels and WhatsApp groups, shared in founder communities, and mentioned in newsletters with up to 10,000 subscribers in our exact ICP."],
+                    ["p", "One blog got picked up by a Substack in our space: 600 clicks in 48 hours, 3 demo requests."],
+                    ["p", "More backlinks from that one mention than from two months of outreach."],
+                    ["p", "Original research, genuine opinions, and specific numbers travel."],
+                    ["p", "“Here's what we tried, here's what happened, here's the number” is a format that gets shared."],
+                    ["p", "Thought leadership isn't a brand play, it's a distribution strategy. And it feeds your SEO in ways that content volume alone never will."],
+                    ["h2", "What a working B2B SaaS SEO strategy actually looks like"],
+                    ["p", "Start with 8-10 bottom-of-funnel pages. High intent, low competition, specific to your ICP. Write them with real depth and a real opinion."],
+                    ["p", "Build content clusters around your core use cases that feed authority back to those pages. Fix your CTAs before you scale traffic. Use Claude to accelerate research and structure, but put your experience into every blog."],
+                    ["p", "Then distribute each piece like it's a product launch. Communities. Newsletters. LinkedIn. Founder accounts. Measure demo-influenced traffic and pipeline, not sessions."],
+                    ["p", "And check your branded vs non-branded split before you celebrate any traffic milestone. If 80% of your organic visitors already knew your name, the SEO work hasn't started yet."],
+                    ["p", "Done right, organic compounds. A blog you write this weekend can drive demos for the next three years."]
+                ]
+            }
+        };
+
+        const params = new URLSearchParams(window.location.search);
+        const slug = params.get("post") || "webinars";
+        const post = posts[slug];
+        const title = document.querySelector("#article-title");
+        const dek = document.querySelector("#article-dek");
+        const body = document.querySelector("#article-body");
+        const original = document.querySelector("#original-link");
+
+        function renderItem([type, text]) {
+            const element = document.createElement(type === "blockquote" ? "blockquote" : type);
+            const paragraph = type === "blockquote" ? document.createElement("p") : null;
+            const target = paragraph || element;
+            target.textContent = text;
+            if (paragraph) element.appendChild(paragraph);
+            return element;
+        }
+
+        if (!post) {
+            title.textContent = "Article not found";
+            dek.textContent = "This article link does not exist yet.";
+            original.style.display = "none";
+            body.innerHTML = "<p class='missing'>Go back to the thoughts page and choose another piece.</p>";
+        } else {
+            document.title = `${post.title} | Aaina Narang`;
+            title.textContent = post.title;
+            dek.textContent = post.dek;
+            original.href = post.source;
+            post.body.forEach((item) => body.appendChild(renderItem(item)));
+        }
+    </script>
+</body>
+</html>
