@@ -9,12 +9,13 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #f7fbf2;
-            --paper: #fffff8;
-            --ink: #102018;
-            --muted: #657168;
-            --line: rgba(16, 32, 24, 0.12);
-            --accent: #caff67;
+            --bg: #FAF6F0;
+            --paper: #FFFFFF;
+            --ink: #201A15;
+            --muted: #7C736A;
+            --line: #EBE3D9;
+            --accent: #E85D1F;
+            --accent-soft: #FBE6D8;
             --font-body: "DM Sans", system-ui, sans-serif;
             --font-mono: "DM Mono", monospace;
             --font-serif: "Instrument Serif", Georgia, serif;
@@ -35,8 +36,8 @@
             font-family: var(--font-body);
             color: var(--ink);
             background:
-                radial-gradient(circle at 18% 78%, rgba(111, 148, 52, 0.1), transparent 18rem),
-                linear-gradient(180deg, var(--bg), #fffdf5);
+                radial-gradient(circle at 18% 78%, rgba(232, 93, 31, 0.08), transparent 18rem),
+                linear-gradient(180deg, var(--bg), #FFFDF8);
             -webkit-font-smoothing: antialiased;
         }
 
@@ -47,8 +48,8 @@
             pointer-events: none;
             opacity: 0.28;
             background-image:
-                linear-gradient(rgba(16, 32, 24, 0.035) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(16, 32, 24, 0.03) 1px, transparent 1px);
+                linear-gradient(rgba(32, 26, 21, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(32, 26, 21, 0.03) 1px, transparent 1px);
             background-size: 44px 44px;
             mask-image: linear-gradient(to bottom, black, transparent 92%);
         }
@@ -136,7 +137,7 @@
 
         mark {
             color: var(--ink);
-            background: linear-gradient(180deg, transparent 50%, rgba(202, 255, 103, 0.7) 50%);
+            background: linear-gradient(180deg, transparent 50%, var(--accent-soft) 50%);
             border-radius: 0.22rem;
             padding: 0 0.06em;
         }

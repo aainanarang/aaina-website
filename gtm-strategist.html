@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B2B SaaS GTM Strategist</title>
+    <link rel="stylesheet" href="gtm-strategist.css">
+</head>
+<body>
+    <div class="app-shell">
+        <header class="topbar">
+            <a class="brand-link" href="index.html" aria-label="Back to Aaina home">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M14.8 5.2 8 12l6.8 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Aaina Labs</span>
+            </a>
+
+            <div class="topbar-status" aria-label="Workspace status">
+                <span class="status-dot" aria-hidden="true"></span>
+                <span>GTM strategy workspace</span>
+            </div>
+        </header>
+
+        <main class="strategist-layout">
+            <section class="control-panel" aria-labelledby="control-title">
+                <div class="panel-heading">
+                    <p class="eyebrow">B2B SaaS strategist</p>
+                    <h1 id="control-title">Drop in a domain. Get the GTM read.</h1>
+                    <p class="lede">The agent researches the company, infers the market, and builds a GTM plan. You only edit assumptions if something looks off.</p>
+                </div>
+
+                <form class="strategy-form" id="strategy-form" novalidate>
+                    <fieldset class="domain-fieldset">
+                        <legend>Research target</legend>
+
+                        <label class="field domain-field">
+                            <span>Company domain</span>
+                            <input id="companyDomain" name="companyDomain" type="text" inputmode="url" autocomplete="url" placeholder="northstarledger.ai" required>
+                        </label>
+
+                        <label class="field">
+                            <span>Optional context</span>
+                            <textarea id="notes" name="notes" rows="4" placeholder="Add anything the website may not show: stage, ACV, traction, target segment, recent launch, sales notes"></textarea>
+                        </label>
+
+                        <p class="fetch-note">Static MVP: tries a browser-safe homepage read, then falls back to domain and copy inference when CORS blocks direct fetching.</p>
+                    </fieldset>
+
+                    <details class="assumption-drawer" id="assumption-drawer">
+                        <summary>
+                            <span>Review inferred assumptions</span>
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="m7 10 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </summary>
+
+                        <div class="assumption-body">
+                            <fieldset>
+                                <legend>Company</legend>
+
+                                <label class="field">
+                                    <span>Company name</span>
+                                    <input id="companyName" name="companyName" type="text" autocomplete="organization" placeholder="Inferred from domain">
+                                </label>
+
+                                <label class="field">
+                                    <span>Product category</span>
+                                    <input id="productCategory" name="productCategory" type="text" placeholder="Inferred from site copy">
+                                </label>
+
+                                <div class="form-grid">
+                                    <label class="field">
+                                        <span>Stage</span>
+                                        <select id="stage" name="stage">
+                                            <option value="">Infer stage</option>
+                                            <option value="preseed">Pre-seed</option>
+                                            <option value="seed">Seed</option>
+                                            <option value="seriesA">Series A</option>
+                                            <option value="growth">Growth</option>
+                                        </select>
+                                    </label>
+
+                                    <label class="field">
+                                        <span>Team bandwidth</span>
+                                        <select id="teamSize" name="teamSize">
+                                            <option value="">Infer bandwidth</option>
+                                            <option value="solo">Founder only</option>
+                                            <option value="lean">Founder + marketer</option>
+                                            <option value="pods">GTM pod</option>
+                                            <option value="scaled">Dedicated team</option>
+                                        </select>
+                                    </label>
+                                </div>
+                            </fieldset>
+
+                            <fieldset>
+                                <legend>Market</legend>
+
+                                <label class="field">
+                                    <span>Target buyer</span>
+                                    <input id="targetBuyer" name="targetBuyer" type="text" placeholder="Inferred buyer">
+                                </label>
+
+                                <div class="form-grid">
+                                    <label class="field">
+                                        <span>Average contract value</span>
+                                        <input id="averageAcv" name="averageAcv" type="number" min="500" step="500" placeholder="Inferred ACV">
+                                    </label>
+
+                                    <label class="field">
+                                        <span>Sales cycle in days</span>
+                                        <input id="salesCycle" name="salesCycle" type="number" min="7" step="1" placeholder="Inferred cycle">
+                                    </label>
+                                </div>
+
+                                <div class="form-grid">
+                                    <label class="field">
+                                        <span>90 day revenue target</span>
+                                        <input id="targetRevenue" name="targetRevenue" type="number" min="1000" step="1000" placeholder="Inferred target">
+                                    </label>
+
+                                    <label class="field">
+                                        <span>Monthly GTM budget</span>
+                                        <input id="monthlyBudget" name="monthlyBudget" type="number" min="0" step="500" placeholder="Inferred budget">
+                                    </label>
+                                </div>
+                            </fieldset>
+
+                            <fieldset>
+                                <legend>Current motion</legend>
+
+                                <div class="form-grid">
+                                    <label class="field">
+                                        <span>Primary objective</span>
+                                        <select id="objective" name="objective">
+                                            <option value="">Infer objective</option>
+                                            <option value="firstCustomers">Find first 10 customers</option>
+                                            <option value="pipeline">Generate qualified pipeline</option>
+                                            <option value="launch">Launch a new product</option>
+                                            <option value="moveUpmarket">Move upmarket</option>
+                                            <option value="activation">Increase activation</option>
+                                        </select>
+                                    </label>
+
+                                    <label class="field">
+                                        <span>Current strongest channel</span>
+                                        <select id="primaryChannel" name="primaryChannel">
+                                            <option value="">Infer channel</option>
+                                            <option value="none">No reliable channel yet</option>
+                                            <option value="founder">Founder-led LinkedIn</option>
+                                            <option value="seo">SEO or content</option>
+                                            <option value="outbound">Outbound</option>
+                                            <option value="events">Webinars or events</option>
+                                            <option value="partners">Partners</option>
+                                            <option value="plg">Product-led growth</option>
+                                        </select>
+                                    </label>
+                                </div>
+
+                                <div class="form-grid">
+                                    <label class="field">
+                                        <span>Biggest bottleneck</span>
+                                        <select id="bottleneck" name="bottleneck">
+                                            <option value="">Infer bottleneck</option>
+                                            <option value="positioning">Positioning is fuzzy</option>
+                                            <option value="pipeline">Not enough pipeline</option>
+                                            <option value="conversion">Calls are not converting</option>
+                                            <option value="activation">Users sign up but do not activate</option>
+                                            <option value="trust">Not enough proof or trust</option>
+                                            <option value="data">Messy CRM or GTM data</option>
+                                        </select>
+                                    </label>
+
+                                    <label class="field">
+                                        <span>Traction signal</span>
+                                        <select id="traction" name="traction">
+                                            <option value="">Infer traction</option>
+                                            <option value="none">No repeatable signal</option>
+                                            <option value="calls">Some sales calls convert</option>
+                                            <option value="content">Content gets high-intent replies</option>
+                                            <option value="usage">Product usage is growing</option>
+                                            <option value="referrals">Referrals show up often</option>
+                                            <option value="enterprise">Enterprise interest exists</option>
+                                        </select>
+                                    </label>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </details>
+
+                    <p class="form-error" id="form-error" role="alert"></p>
+
+                    <div class="form-actions">
+                        <button class="button button-primary" type="submit">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M5 12h12.5M13 6.5 18.5 12 13 17.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span>Research domain</span>
+                        </button>
+
+                        <button class="button button-secondary" type="button" id="sample-button">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M7.5 4.5h6.3l2.7 2.9v12.1h-9z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+                                <path d="M13.6 4.8v3h2.7M9.6 12h4.8M9.6 15.2h3.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span>Load sample</span>
+                        </button>
+
+                        <button class="icon-button" type="button" id="reset-button" aria-label="Reset planner">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M6.4 8.1A7 7 0 1 1 5 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                                <path d="M6.3 4.8v3.5h3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="workspace-panel" aria-labelledby="workspace-title">
+                <div class="workspace-toolbar">
+                    <div>
+                        <p class="eyebrow">Operating plan</p>
+                        <h2 id="workspace-title">Strategy output</h2>
+                    </div>
+
+                    <button class="button button-secondary" type="button" id="copy-button" disabled>
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M8 8.5h10v11H8z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+                            <path d="M6 15.5H4.8V4.8h10.7V6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span id="copy-label">Copy brief</span>
+                    </button>
+                </div>
+
+                <div class="output-area" id="output-area" aria-live="polite"></div>
+            </section>
+        </main>
+    </div>
+
+    <noscript>
+        <p class="noscript">Turn on JavaScript to run the strategist.</p>
+    </noscript>
+
+    <script src="gtm-strategist.js"></script>
+</body>
+</html>

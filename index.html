@@ -9,15 +9,16 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #f7fbf2;
-            --paper: #fffff8;
-            --ink: #102018;
-            --muted: #657168;
-            --line: #dfe8d8;
-            --accent: #caff67;
-            --accent-deep: #6f9434;
-            --soft-green: #edf7df;
-            --folder-shadow: rgba(35, 54, 33, 0.16);
+            --bg: #FAF6F0;
+            --paper: #FFFFFF;
+            --ink: #201A15;
+            --muted: #7C736A;
+            --line: #EBE3D9;
+            --accent: #E85D1F;
+            --accent-hover: #C64A12;
+            --accent-soft: #FBE6D8;
+            --ink-bg: #201A15;
+            --folder-shadow: rgba(32, 26, 21, 0.16);
             --font-body: "DM Sans", system-ui, sans-serif;
             --font-mono: "DM Mono", monospace;
             --font-serif: "Instrument Serif", Georgia, serif;
@@ -39,8 +40,8 @@
             font-family: var(--font-body);
             color: var(--ink);
             background:
-                radial-gradient(circle at 18% 78%, rgba(111, 148, 52, 0.11), transparent 18rem),
-                linear-gradient(180deg, var(--bg), #fffdf5);
+                radial-gradient(circle at 18% 78%, rgba(232, 93, 31, 0.08), transparent 18rem),
+                linear-gradient(180deg, var(--bg), #FFFDF8);
             -webkit-font-smoothing: antialiased;
         }
 
@@ -51,10 +52,21 @@
             pointer-events: none;
             opacity: 0.34;
             background-image:
-                linear-gradient(rgba(16, 32, 24, 0.035) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(16, 32, 24, 0.03) 1px, transparent 1px);
+                linear-gradient(rgba(32, 26, 21, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(32, 26, 21, 0.03) 1px, transparent 1px);
             background-size: 44px 44px;
             mask-image: linear-gradient(to bottom, black, transparent 92%);
+        }
+
+        .eyebrow {
+            display: inline-block;
+            margin-bottom: 0.9rem;
+            color: var(--accent);
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
         }
 
         .hero {
@@ -95,16 +107,16 @@
             text-decoration: none;
             font-size: 0.9rem;
             font-weight: 700;
-            border: 1px solid rgba(16, 32, 24, 0.5);
+            border: 1px solid rgba(32, 26, 21, 0.5);
             border-radius: 0.68rem;
-            background: rgba(255, 255, 248, 0.82);
-            box-shadow: 0 7px 0 rgba(16, 32, 24, 0.08);
+            background: rgba(255, 255, 255, 0.82);
+            box-shadow: 0 7px 0 rgba(32, 26, 21, 0.08);
             transition: transform 0.24s var(--ease), box-shadow 0.24s var(--ease);
         }
 
         .top-action:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 18px rgba(16, 32, 24, 0.1);
+            box-shadow: 0 10px 18px rgba(32, 26, 21, 0.1);
         }
 
         .intro {
@@ -117,40 +129,40 @@
         h1 {
             margin: 0;
             font-family: var(--font-serif);
-            font-size: clamp(2.8rem, 5.6vw, 4.6rem);
+            font-size: clamp(2.7rem, 6vw, 5.1rem);
             font-weight: 400;
-            line-height: 0.94;
+            line-height: 0.98;
             letter-spacing: 0;
         }
 
         .subheading {
-            max-width: 760px;
-            min-height: 4.4rem;
+            max-width: 700px;
             margin: 1.4rem auto 0;
             color: var(--muted);
             font-size: clamp(1.08rem, 2vw, 1.42rem);
             line-height: 1.55;
         }
 
-        .word-shell {
+        .hero-cta {
+            margin-top: 2rem;
             display: inline-flex;
             align-items: center;
-            min-width: 13ch;
-            color: var(--ink);
+            gap: 0.45rem;
+            padding: 0.9rem 1.7rem;
+            border-radius: 999px;
+            background: var(--accent);
+            color: #fff;
             font-weight: 700;
-            white-space: nowrap;
+            font-size: 1rem;
+            text-decoration: none;
+            box-shadow: 0 16px 32px rgba(232, 93, 31, 0.28);
+            transition: transform 0.24s var(--ease), background 0.24s var(--ease), box-shadow 0.24s var(--ease);
         }
 
-        .animated-word {
-            display: inline-block;
-            padding: 0.02em 0.18em 0.08em;
-            color: var(--ink);
-            background: linear-gradient(180deg, rgba(202, 255, 103, 0) 42%, rgba(202, 255, 103, 0.72) 42%);
-            border-radius: 0.28rem;
-        }
-
-        .animated-word.is-changing {
-            animation: word-pop 0.42s var(--ease);
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            background: var(--accent-hover);
+            box-shadow: 0 20px 38px rgba(232, 93, 31, 0.34);
         }
 
         .folder-nav {
@@ -182,9 +194,9 @@
             height: auto;
             display: block;
             filter:
-                saturate(0.58)
+                saturate(0.72)
                 brightness(0.98)
-                drop-shadow(0 14px 18px rgba(59, 88, 38, 0.12));
+                drop-shadow(0 14px 18px rgba(32, 26, 21, 0.14));
             opacity: 0.9;
         }
 
@@ -218,16 +230,14 @@
         }
 
         .work-section,
-        .blog-section,
-        .projects-section {
+        .blog-section {
             position: relative;
             min-height: auto;
             padding: clamp(1.25rem, 3vh, 2rem) 2rem 2rem;
         }
 
         .work-panel,
-        .blog-panel,
-        .projects-panel {
+        .blog-panel {
             width: min(1120px, 100%);
             margin: 0 auto;
             padding: clamp(1.4rem, 4vw, 3.4rem) 0;
@@ -244,14 +254,14 @@
         .blog-intro h2 {
             margin: 0;
             font-family: var(--font-serif);
-            font-size: clamp(2rem, 4vw, 3.45rem);
+            font-size: clamp(2.1rem, 4.4vw, 3.6rem);
             font-weight: 400;
             line-height: 0.98;
             letter-spacing: 0;
         }
 
         .blog-intro h2 {
-            font-size: clamp(1.45rem, 2.7vw, 2.35rem);
+            font-size: clamp(1.5rem, 2.9vw, 2.45rem);
             line-height: 1.08;
         }
 
@@ -264,29 +274,61 @@
             line-height: 1.6;
         }
 
+        /* Depth move: case study cards fan out with a slight rotation,
+           straighten and lift on hover so they read as physical objects. */
         .work-map {
             position: relative;
-            display: grid;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
             width: min(1120px, 100%);
-            margin: clamp(1.7rem, 4vw, 3.2rem) auto 0;
-            border-top: 1px solid rgba(16, 32, 24, 0.12);
+            margin: clamp(2.2rem, 5vw, 3.8rem) auto 0;
+            padding-top: clamp(1rem, 3vw, 2rem);
         }
 
         .work-card {
             position: relative;
+            width: min(280px, 84vw);
+            margin: 0 -1.2rem 1.6rem;
+            padding: 1.9rem 1.6rem;
             display: grid;
-            grid-template-columns: minmax(150px, 0.36fr) minmax(0, 1fr);
-            gap: clamp(1rem, 3vw, 2.5rem);
-            padding: clamp(1.35rem, 3vw, 2.2rem) 0;
-            border-bottom: 1px solid rgba(16, 32, 24, 0.1);
+            gap: 0.9rem;
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 1.1rem;
+            box-shadow: 0 20px 44px rgba(32, 26, 21, 0.12);
             opacity: 0;
-            transform: translateY(12px);
+            transition:
+                opacity 0.6s var(--ease),
+                transform 0.36s var(--ease),
+                box-shadow 0.36s var(--ease);
         }
+
+        .work-card:nth-child(1) { transform: rotate(-6deg) translateY(0.5rem); z-index: 1; }
+        .work-card:nth-child(2) { transform: rotate(-2deg); z-index: 2; }
+        .work-card:nth-child(3) { transform: rotate(2deg); z-index: 3; }
+        .work-card:nth-child(4) { transform: rotate(6deg) translateY(0.5rem); z-index: 4; }
+
+        .work-card:hover {
+            transform: translateY(-0.9rem) rotate(0deg);
+            box-shadow: 0 30px 60px rgba(32, 26, 21, 0.18);
+            z-index: 10;
+        }
+
+        .work-map.is-visible .work-card {
+            opacity: 1;
+        }
+
+        .work-map.is-visible .work-card:nth-child(1) { transition-delay: 0.06s; }
+        .work-map.is-visible .work-card:nth-child(2) { transition-delay: 0.16s; }
+        .work-map.is-visible .work-card:nth-child(3) { transition-delay: 0.26s; }
+        .work-map.is-visible .work-card:nth-child(4) { transition-delay: 0.36s; }
 
         .work-card h3 {
             margin: 0;
             font-family: var(--font-mono);
-            font-size: clamp(0.98rem, 1.42vw, 1.18rem);
+            font-size: 1rem;
             font-weight: 600;
             letter-spacing: 0;
             text-transform: uppercase;
@@ -294,7 +336,7 @@
 
         .work-card ul {
             display: grid;
-            gap: 0.7rem;
+            gap: 0.65rem;
             margin: 0;
             padding: 0;
             list-style: none;
@@ -302,37 +344,21 @@
 
         .work-card li {
             color: var(--muted);
-            font-size: clamp(0.95rem, 1.18vw, 1.04rem);
+            font-size: 0.92rem;
             line-height: 1.5;
         }
 
         .outcome {
             color: var(--ink);
             font-weight: 700;
-            background: linear-gradient(180deg, rgba(202, 255, 103, 0) 50%, rgba(202, 255, 103, 0.68) 50%);
+            background: linear-gradient(180deg, rgba(251, 230, 216, 0) 50%, var(--accent-soft) 50%);
             border-radius: 0.22rem;
-        }
-
-        .work-map.is-visible .work-card {
-            animation: reveal-work-card 0.52s var(--ease) forwards;
-        }
-
-        .work-map.is-visible .work-card:nth-of-type(1) {
-            animation-delay: 0.12s;
-        }
-
-        .work-map.is-visible .work-card:nth-of-type(2) {
-            animation-delay: 0.28s;
-        }
-
-        .work-map.is-visible .work-card:nth-of-type(3) {
-            animation-delay: 0.44s;
         }
 
         .blog-grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
-            border-top: 1px solid rgba(16, 32, 24, 0.12);
+            border-top: 1px solid var(--line);
         }
 
         .blog-card {
@@ -344,14 +370,14 @@
             padding: clamp(1.05rem, 2.8vw, 1.8rem) clamp(0.9rem, 2.8vw, 1.8rem);
             color: var(--ink);
             text-decoration: none;
-            border-bottom: 1px solid rgba(16, 32, 24, 0.11);
+            border-bottom: 1px solid var(--line);
             transition:
                 background 0.28s var(--ease),
                 color 0.28s var(--ease);
         }
 
         .blog-card:nth-child(odd) {
-            border-right: 1px solid rgba(16, 32, 24, 0.1);
+            border-right: 1px solid var(--line);
         }
 
         .blog-card:last-child:nth-child(odd) {
@@ -360,7 +386,7 @@
         }
 
         .blog-card:hover {
-            background: rgba(246, 255, 231, 0.42);
+            background: var(--accent-soft);
         }
 
         .blog-card h3 {
@@ -380,193 +406,133 @@
             line-height: 1.5;
         }
 
-        .projects-section {
-            margin-top: 0;
-            padding-top: clamp(1rem, 3vw, 2.2rem);
-            padding-bottom: clamp(3rem, 7vw, 5rem);
-            background:
-                linear-gradient(rgba(16, 32, 24, 0.055) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(16, 32, 24, 0.045) 1px, transparent 1px),
-                linear-gradient(180deg, rgba(247, 251, 242, 0.2), rgba(255, 253, 245, 0.86));
-            background-size: 42px 42px, 42px 42px, auto;
-            border-top: 1px solid rgba(16, 32, 24, 0.08);
+        /* Depth move: ink-ground section. Dark plane against the paper
+           sections above and below breaks the single-plane monotony. */
+        .tools-section {
+            position: relative;
+            background: var(--ink-bg);
+            padding: clamp(3.2rem, 7vw, 5.5rem) 2rem;
         }
 
-        .projects-panel {
-            width: min(1280px, 100%);
+        .tools-panel {
+            width: min(1200px, 100%);
+            margin: 0 auto;
         }
 
-        .projects-intro {
-            width: min(1120px, 100%);
-            margin: 0 auto clamp(1.4rem, 4vw, 2.4rem);
+        .tools-intro {
+            max-width: 640px;
+            margin: 0 auto clamp(2.2rem, 5vw, 3.4rem);
+            text-align: center;
         }
 
-        .projects-intro h2 {
-            max-width: 700px;
+        .tools-intro h2 {
             margin: 0;
             font-family: var(--font-serif);
-            font-size: clamp(2.2rem, 5vw, 4.2rem);
+            font-size: clamp(2.2rem, 4.6vw, 3.7rem);
             font-weight: 400;
-            line-height: 0.98;
-            letter-spacing: 0;
+            line-height: 1;
+            color: var(--bg);
         }
 
-        .project-gallery {
+        .tools-intro p {
+            margin: 1.1rem auto 0;
+            color: rgba(250, 246, 240, 0.62);
+            font-size: clamp(1rem, 1.4vw, 1.12rem);
+            line-height: 1.6;
+        }
+
+        .tools-grid {
             display: grid;
-            grid-auto-flow: column;
-            grid-auto-columns: minmax(280px, 360px);
-            gap: 1rem;
-            overflow-x: auto;
-            overscroll-behavior-inline: contain;
-            scroll-snap-type: inline mandatory;
-            padding: 0 max(1rem, calc((100vw - 1280px) / 2)) 0.8rem;
-            scrollbar-width: thin;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 1.2rem;
         }
 
-        .project-card {
-            min-height: 430px;
+        .tool-card {
+            position: relative;
+            padding: 1.7rem 1.5rem;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            scroll-snap-align: start;
-            padding: 0.9rem;
-            color: var(--ink);
-            text-decoration: none;
-            border: 1px solid rgba(16, 32, 24, 0.12);
-            border-radius: 1.15rem;
-            background: rgba(255, 255, 248, 0.78);
-            box-shadow: 0 22px 54px rgba(35, 54, 33, 0.08);
-            backdrop-filter: blur(10px);
-            transition: transform 0.28s var(--ease), border-color 0.28s var(--ease), box-shadow 0.28s var(--ease);
-        }
-
-        .project-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(16, 32, 24, 0.24);
-            box-shadow: 0 28px 64px rgba(35, 54, 33, 0.12);
-        }
-
-        .project-preview {
-            min-height: 190px;
-            position: relative;
-            overflow: hidden;
-            border-radius: 0.75rem;
-            border: 1px solid rgba(16, 32, 24, 0.08);
-            background:
-                radial-gradient(circle at 22% 18%, rgba(202, 255, 103, 0.5), transparent 11rem),
-                linear-gradient(135deg, rgba(111, 148, 52, 0.18), rgba(255, 255, 248, 0.82));
-        }
-
-        .project-preview::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(16, 32, 24, 0.055) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(16, 32, 24, 0.045) 1px, transparent 1px);
-            background-size: 22px 22px;
-            mask-image: linear-gradient(to bottom, black, transparent 78%);
-        }
-
-        .project-preview::after {
-            content: "";
-            position: absolute;
-            width: 9rem;
-            height: 9rem;
-            right: -2.5rem;
-            bottom: -3rem;
-            border: 1px solid rgba(16, 32, 24, 0.16);
-            border-radius: 999px;
-        }
-
-        .mini-ui {
-            position: absolute;
-            inset: 1rem;
-            display: grid;
-            align-content: end;
-            gap: 0.55rem;
-        }
-
-        .mini-line,
-        .mini-pill,
-        .mini-score {
-            position: relative;
-            border: 1px solid rgba(16, 32, 24, 0.12);
-            background: rgba(255, 255, 248, 0.74);
-            box-shadow: 0 12px 28px rgba(35, 54, 33, 0.08);
-        }
-
-        .mini-line {
-            height: 2.35rem;
-            border-radius: 0.55rem;
-        }
-
-        .mini-line:nth-child(2) {
-            width: 78%;
-        }
-
-        .mini-line:nth-child(3) {
-            width: 58%;
-        }
-
-        .mini-pill {
-            width: max-content;
-            padding: 0.46rem 0.62rem;
-            border-radius: 999px;
-            color: var(--ink);
-            font-family: var(--font-mono);
-            font-size: 0.78rem;
-        }
-
-        .mini-score {
-            width: 4.4rem;
-            height: 4.4rem;
-            display: grid;
-            place-items: center;
+            gap: 0.65rem;
+            border: 1px solid rgba(250, 246, 240, 0.14);
             border-radius: 1rem;
-            font-family: var(--font-mono);
-            font-size: 1.1rem;
-            font-weight: 700;
+            background: rgba(250, 246, 240, 0.04);
+            transition: transform 0.28s var(--ease), border-color 0.28s var(--ease), background 0.28s var(--ease);
         }
 
-        .project-card h3 {
-            margin: 1.1rem 0 0;
-            font-size: clamp(1.45rem, 2.7vw, 2rem);
-            line-height: 1.05;
-            letter-spacing: 0;
+        .tool-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(232, 93, 31, 0.5);
+            background: rgba(250, 246, 240, 0.07);
         }
 
-        .project-card p {
-            margin: 0.7rem 0 1rem;
-            color: var(--muted);
-            font-size: 1rem;
-            line-height: 1.42;
+        .tool-card--live {
+            border-color: rgba(232, 93, 31, 0.32);
         }
 
-        .waitlist-link {
+        .tool-tag {
             width: fit-content;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.62rem 0.88rem;
+            padding: 0.24rem 0.6rem;
             border-radius: 999px;
             color: var(--ink);
             background: var(--accent);
-            font-weight: 700;
-            text-decoration: none;
-            transition: transform 0.22s var(--ease), background 0.22s var(--ease);
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
         }
 
-        .project-card:hover .waitlist-link {
-            transform: translateY(-1px);
-            background: #bff05e;
+        .tool-tag--playbook {
+            color: rgba(250, 246, 240, 0.72);
+            background: rgba(250, 246, 240, 0.1);
+        }
+
+        .tool-card h3 {
+            margin: 0;
+            color: var(--bg);
+            font-size: 1.2rem;
+            font-weight: 650;
+            letter-spacing: 0;
+        }
+
+        .tool-card p {
+            flex-grow: 1;
+            margin: 0;
+            color: rgba(250, 246, 240, 0.6);
+            font-size: 0.94rem;
+            line-height: 1.5;
+        }
+
+        .tool-link {
+            width: fit-content;
+            margin-top: 0.3rem;
+            color: var(--bg);
+            font-weight: 700;
+            font-size: 0.94rem;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(250, 246, 240, 0.3);
+            transition: color 0.24s var(--ease), border-color 0.24s var(--ease);
+        }
+
+        .tool-link:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .tool-link--live {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .tool-link--live:hover {
+            color: var(--accent-hover);
+            border-color: var(--accent-hover);
         }
 
         .footer {
             position: relative;
             padding: clamp(2.5rem, 6vw, 4.5rem) 2rem;
-            border-top: 1px solid rgba(16, 32, 24, 0.1);
-            background: rgba(255, 253, 245, 0.72);
+            background: var(--ink-bg);
         }
 
         .footer-inner {
@@ -580,7 +546,7 @@
 
         .footer-copy {
             margin: 0;
-            color: var(--muted);
+            color: rgba(250, 246, 240, 0.6);
             font-family: var(--font-mono);
             font-size: 0.9rem;
         }
@@ -596,36 +562,24 @@
             height: 2.75rem;
             display: inline-grid;
             place-items: center;
-            color: var(--ink);
-            border: 1px solid rgba(16, 32, 24, 0.16);
+            color: var(--bg);
+            border: 1px solid rgba(250, 246, 240, 0.22);
             border-radius: 999px;
-            background: rgba(255, 255, 248, 0.76);
+            background: rgba(250, 246, 240, 0.06);
             text-decoration: none;
             transition: transform 0.24s var(--ease), background 0.24s var(--ease), border-color 0.24s var(--ease);
         }
 
         .social-link:hover {
             transform: translateY(-3px);
-            border-color: rgba(16, 32, 24, 0.28);
-            background: rgba(202, 255, 103, 0.58);
+            border-color: var(--accent);
+            background: rgba(232, 93, 31, 0.2);
         }
 
         .social-link svg {
             width: 1.15rem;
             height: 1.15rem;
             display: block;
-        }
-
-        @keyframes word-pop {
-            0% { opacity: 0; transform: translateY(8px) scale(0.96); }
-            100% { opacity: 1; transform: translateY(0) scale(1); }
-        }
-
-        @keyframes reveal-work-card {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         @media (max-width: 760px) {
@@ -649,11 +603,10 @@
             }
 
             h1 {
-                font-size: clamp(2.7rem, 12vw, 4rem);
+                font-size: clamp(2.4rem, 11vw, 3.4rem);
             }
 
             .subheading {
-                min-height: 6.8rem;
                 font-size: 1rem;
             }
 
@@ -671,28 +624,27 @@
             }
 
             .work-section,
-            .blog-section,
-            .projects-section {
+            .blog-section {
                 padding: 1.5rem 0.8rem 0.8rem;
             }
 
             .work-panel,
-            .blog-panel,
-            .projects-panel {
+            .blog-panel {
                 padding: 2rem 0;
             }
 
-            .work-map {
-                grid-template-columns: 1fr;
+            .work-card,
+            .work-card:nth-child(1),
+            .work-card:nth-child(2),
+            .work-card:nth-child(3),
+            .work-card:nth-child(4) {
+                width: 100%;
+                margin: 0 0 1.2rem;
+                transform: none;
             }
 
-            .work-card,
-            .work-card:nth-of-type(1),
-            .work-card:nth-of-type(2),
-            .work-card:nth-of-type(3) {
-                grid-template-columns: 1fr;
-                gap: 0.8rem;
-                transform: translateY(12px);
+            .work-card:hover {
+                transform: translateY(-4px);
             }
 
             .blog-grid {
@@ -709,15 +661,6 @@
 
             .blog-card {
                 min-height: 150px;
-            }
-
-            .project-gallery {
-                grid-auto-columns: minmax(250px, 82vw);
-                padding-inline: 0.2rem;
-            }
-
-            .project-card {
-                min-height: 390px;
             }
 
             .footer {
@@ -737,12 +680,10 @@
         <section class="hero-panel" aria-label="Aaina hero mockup">
             <a href="#contact" class="top-action">Say hi!</a>
             <div class="intro">
-                <h1>Hi I'm Aaina</h1>
-                <p class="subheading">
-                    I’m a GTM engineer and 3x founding marketer. I help early-stage startups figure out
-                    <span class="word-shell"><span class="animated-word" id="animated-word">positioning</span></span>
-                    .
-                </p>
+                <span class="eyebrow">GTM engineer · B2B SaaS</span>
+                <h1>Hi, I'm Aaina. I build GTM from scratch for B2B SaaS, the growth engineer kind.</h1>
+                <p class="subheading">Three founding marketing roles. Two full motions built solo. And I ship my own GTM tooling.</p>
+                <a class="hero-cta" href="#work">See the case studies →</a>
             </div>
 
             <nav class="folder-nav" aria-label="Primary sections">
@@ -756,9 +697,9 @@
                     <span>Blog</span>
                     <small>notes and systems</small>
                 </a>
-                <a class="folder" href="#projects">
+                <a class="folder" href="#tools">
                     <img src="best-pick-folder-no-text.svg" alt="" aria-hidden="true">
-                    <span>Projects</span>
+                    <span>Tools</span>
                     <small>things I build</small>
                 </a>
             </nav>
@@ -768,6 +709,7 @@
     <section class="work-section" id="work" aria-label="Aaina work">
         <div class="work-panel">
             <div class="work-intro">
+                <span class="eyebrow">Case studies</span>
                 <h2>Here is what I have worked on:</h2>
             </div>
 
@@ -798,105 +740,91 @@
                         <li>Turned product context into launch assets, founder notes, and community-ready posts.</li>
                     </ul>
                 </article>
+
+                <!-- SAKSHAM: placeholder body copy for Threado, refine when ready -->
+                <article class="work-card">
+                    <h3>Threado</h3>
+                    <ul>
+                        <li>Ran lead gen and branding work alongside the core marketing motion.</li>
+                        <li>Owned community management, keeping the space active and on-message.</li>
+                        <li>Led <span class="outcome">two product launches to #1 on Product Hunt</span>.</li>
+                    </ul>
+                </article>
             </div>
         </div>
     </section>
 
-    <section class="projects-section" id="projects" aria-label="Aaina projects">
-        <div class="projects-panel">
-            <div class="projects-intro">
-                <h2>Stack I'm Cooking</h2>
+    <!-- Depth move: this section and the footer sit on the ink ground
+         (var(--ink-bg)), alternating with the paper sections above. -->
+    <section class="tools-section" id="tools" aria-label="GTM tooling">
+        <div class="tools-panel">
+            <div class="tools-intro">
+                <span class="eyebrow">Tools</span>
+                <h2>GTM tooling I build and use</h2>
+                <p>Two are live. The rest are playbooks I run by hand, systemized enough to hand off.</p>
             </div>
 
-            <div class="project-gallery">
-                <article class="project-card">
-                    <div class="project-preview" aria-hidden="true">
-                        <div class="mini-ui">
-                            <span class="mini-pill">ICP fit: high</span>
-                            <span class="mini-line"></span>
-                            <span class="mini-line"></span>
-                        </div>
-                    </div>
-                    <div>
-                        <h3>Lead Scoring Agent</h3>
-                        <p>Ranks inbound and outbound accounts by intent, fit, urgency, and the next best action.</p>
-                        <a class="waitlist-link" href="mailto:aainanarang2911@gmail.com?subject=Waitlist%20for%20Lead%20Scoring%20Agent">Join the waitlist</a>
-                    </div>
+            <div class="tools-grid">
+                <article class="tool-card tool-card--live">
+                    <span class="tool-tag">Live</span>
+                    <h3>Founder Brand Studio</h3>
+                    <p>Turns founder calls, notes, and hot takes into sharp posts, essays, and launch narratives.</p>
+                    <!-- SAKSHAM: paste the deployed URL for Founder Brand Studio here -->
+                    <a class="tool-link tool-link--live" href="#" target="_blank" rel="noreferrer">Try it →</a>
                 </article>
 
-                <article class="project-card">
-                    <div class="project-preview" aria-hidden="true">
-                        <div class="mini-ui">
-                            <span class="mini-score">42</span>
-                            <span class="mini-line"></span>
-                            <span class="mini-line"></span>
-                        </div>
-                    </div>
-                    <div>
-                        <h3>Founder Brand Studio</h3>
-                        <p>Turns founder calls, notes, and hot takes into sharp posts, essays, and launch narratives.</p>
-                        <a class="waitlist-link" href="mailto:aainanarang2911@gmail.com?subject=Waitlist%20for%20Founder%20Brand%20Studio">Join the waitlist</a>
-                    </div>
+                <article class="tool-card tool-card--live">
+                    <span class="tool-tag">Live</span>
+                    <h3>Creator GTM Engine</h3>
+                    <p>Finds and vets creators for a campaign, then drafts the pitch, from brief to send in one flow.</p>
+                    <!-- SAKSHAM: paste the deployed URL for Creator GTM Engine here -->
+                    <a class="tool-link tool-link--live" href="#" target="_blank" rel="noreferrer">Try it →</a>
                 </article>
 
-                <article class="project-card">
-                    <div class="project-preview" aria-hidden="true">
-                        <div class="mini-ui">
-                            <span class="mini-pill">cluster ready</span>
-                            <span class="mini-line"></span>
-                            <span class="mini-line"></span>
-                        </div>
-                    </div>
-                    <div>
-                        <h3>SEO Brief Builder</h3>
-                        <p>Maps buyer intent, competitors, POV, internal links, and CTA angles before a draft begins.</p>
-                        <a class="waitlist-link" href="mailto:aainanarang2911@gmail.com?subject=Waitlist%20for%20SEO%20Brief%20Builder">Join the waitlist</a>
-                    </div>
+                <!-- SAKSHAM: this card already linked to a working page (gtm-strategist.html)
+                     before this pass. You didn't name it as one of the two live tools in the
+                     brief, so I kept its real link instead of demoting it to a placeholder
+                     "Read the playbook" # link. Flag if you want it moved into Playbooks instead. -->
+                <article class="tool-card tool-card--live">
+                    <span class="tool-tag">Live</span>
+                    <h3>B2B SaaS GTM Strategist</h3>
+                    <p>Turns market context into an ICP hypothesis, channel mix, experiments, and weekly operating rhythm.</p>
+                    <a class="tool-link tool-link--live" href="gtm-strategist.html">Try it →</a>
                 </article>
 
-                <article class="project-card">
-                    <div class="project-preview" aria-hidden="true">
-                        <div class="mini-ui">
-                            <span class="mini-pill">speaker matched</span>
-                            <span class="mini-line"></span>
-                            <span class="mini-line"></span>
-                        </div>
-                    </div>
-                    <div>
-                        <h3>Webinar Pipeline Kit</h3>
-                        <p>Finds speakers, builds the promo plan, scores registrants, and writes follow-up paths.</p>
-                        <a class="waitlist-link" href="mailto:aainanarang2911@gmail.com?subject=Waitlist%20for%20Webinar%20Pipeline%20Kit">Join the waitlist</a>
-                    </div>
+                <article class="tool-card">
+                    <span class="tool-tag tool-tag--playbook">Playbook</span>
+                    <h3>Lead Scoring Agent</h3>
+                    <p>Ranks inbound and outbound accounts by intent, fit, urgency, and the next best action.</p>
+                    <a class="tool-link" href="#">Read the playbook →</a>
                 </article>
 
-                <article class="project-card">
-                    <div class="project-preview" aria-hidden="true">
-                        <div class="mini-ui">
-                            <span class="mini-score">8.7</span>
-                            <span class="mini-line"></span>
-                            <span class="mini-line"></span>
-                        </div>
-                    </div>
-                    <div>
-                        <h3>Launch Room</h3>
-                        <p>A command center for Product Hunt, founder posts, community drops, and partner asks.</p>
-                        <a class="waitlist-link" href="mailto:aainanarang2911@gmail.com?subject=Waitlist%20for%20Launch%20Room">Join the waitlist</a>
-                    </div>
+                <article class="tool-card">
+                    <span class="tool-tag tool-tag--playbook">Playbook</span>
+                    <h3>SEO Brief Builder</h3>
+                    <p>Maps buyer intent, competitors, POV, internal links, and CTA angles before a draft begins.</p>
+                    <a class="tool-link" href="#">Read the playbook →</a>
                 </article>
 
-                <article class="project-card">
-                    <div class="project-preview" aria-hidden="true">
-                        <div class="mini-ui">
-                            <span class="mini-pill">signals found</span>
-                            <span class="mini-line"></span>
-                            <span class="mini-line"></span>
-                        </div>
-                    </div>
-                    <div>
-                        <h3>Community Signal Finder</h3>
-                        <p>Scans Reddit, Slack notes, and sales calls for language buyers already use.</p>
-                        <a class="waitlist-link" href="mailto:aainanarang2911@gmail.com?subject=Waitlist%20for%20Community%20Signal%20Finder">Join the waitlist</a>
-                    </div>
+                <article class="tool-card">
+                    <span class="tool-tag tool-tag--playbook">Playbook</span>
+                    <h3>Webinar Pipeline Kit</h3>
+                    <p>Finds speakers, builds the promo plan, scores registrants, and writes follow-up paths.</p>
+                    <a class="tool-link" href="#">Read the playbook →</a>
+                </article>
+
+                <article class="tool-card">
+                    <span class="tool-tag tool-tag--playbook">Playbook</span>
+                    <h3>Launch Room</h3>
+                    <p>A command center for Product Hunt, founder posts, community drops, and partner asks.</p>
+                    <a class="tool-link" href="#">Read the playbook →</a>
+                </article>
+
+                <article class="tool-card">
+                    <span class="tool-tag tool-tag--playbook">Playbook</span>
+                    <h3>Community Signal Finder</h3>
+                    <p>Scans Reddit, Slack notes, and sales calls for language buyers already use.</p>
+                    <a class="tool-link" href="#">Read the playbook →</a>
                 </article>
             </div>
         </div>
@@ -905,6 +833,7 @@
     <section class="blog-section" id="blog" aria-label="Aaina blog">
         <div class="blog-panel">
             <div class="blog-intro">
+                <span class="eyebrow">Writing</span>
                 <h2>Thoughts on GTM, founder brand, distribution, and positioning.</h2>
             </div>
 
@@ -932,6 +861,8 @@
             </div>
         </div>
     </section>
+
+    <!-- SAKSHAM: drop further feedback on this pass here -->
 
     <footer class="footer" id="contact" aria-label="Contact Aaina">
         <div class="footer-inner">
@@ -962,29 +893,6 @@
     </main>
 
     <script>
-        const words = [
-            "positioning",
-            "founder brand",
-            "growth loops",
-            "SEO",
-            "events",
-            "PR",
-            "launches",
-            "content systems"
-        ];
-
-        const animatedWord = document.querySelector("#animated-word");
-        let index = 0;
-
-        window.setInterval(() => {
-            index = (index + 1) % words.length;
-            animatedWord.classList.remove("is-changing");
-            window.requestAnimationFrame(() => {
-                animatedWord.textContent = words[index];
-                animatedWord.classList.add("is-changing");
-            });
-        }, 1450);
-
         const workMap = document.querySelector("#work-map");
 
         if (workMap) {
