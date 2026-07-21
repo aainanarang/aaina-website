@@ -13,9 +13,8 @@
             --paper: #FFFFFF;
             --ink: #201A15;
             --muted: #7C736A;
-            --line: #EBE3D9;
+            --line: rgba(32, 26, 21, 0.12);
             --accent: #E85D1F;
-            --accent-soft: #FBE6D8;
             --font-body: "DM Sans", system-ui, sans-serif;
             --font-mono: "DM Mono", monospace;
             --font-serif: "Instrument Serif", Georgia, serif;
@@ -36,7 +35,7 @@
             font-family: var(--font-body);
             color: var(--ink);
             background:
-                radial-gradient(circle at 18% 78%, rgba(232, 93, 31, 0.08), transparent 18rem),
+                radial-gradient(circle at 18% 78%, rgba(198, 74, 18, 0.1), transparent 18rem),
                 linear-gradient(180deg, var(--bg), #FFFDF8);
             -webkit-font-smoothing: antialiased;
         }
@@ -137,7 +136,7 @@
 
         mark {
             color: var(--ink);
-            background: linear-gradient(180deg, transparent 50%, var(--accent-soft) 50%);
+            background: linear-gradient(180deg, transparent 50%, rgba(251, 230, 216, 0.7) 50%);
             border-radius: 0.22rem;
             padding: 0 0.06em;
         }
