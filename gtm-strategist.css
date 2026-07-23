@@ -7,9 +7,9 @@
     --quiet: #A79C90;
     --line: #EBE3D9;
     --line-strong: #DDD0C0;
-    --accent: #E85D1F;
+    --accent: #FF4D00;
     --accent-soft: #FBE6D8;
-    --accent-ink: #C64A12;
+    --accent-ink: #E04400;
     --warn: #8f623d;
     --shadow: 0 22px 60px rgba(32, 26, 21, 0.08);
     --font-body: "Geist", "Satoshi", "DM Sans", system-ui, sans-serif;
@@ -111,7 +111,7 @@ svg {
 }
 
 .brand-link:hover {
-    background: rgba(232, 93, 31, 0.08);
+    background: rgba(255, 77, 0, 0.08);
     transform: translateY(-1px);
 }
 
@@ -282,8 +282,8 @@ textarea {
 input:focus,
 select:focus,
 textarea:focus {
-    border-color: rgba(232, 93, 31, 0.75);
-    box-shadow: 0 0 0 3px rgba(232, 93, 31, 0.12);
+    border-color: rgba(255, 77, 0, 0.75);
+    box-shadow: 0 0 0 3px rgba(255, 77, 0, 0.12);
     background: #ffffff;
 }
 
@@ -400,7 +400,7 @@ textarea:focus {
 
 .button-secondary:hover,
 .icon-button:hover {
-    border-color: rgba(232, 93, 31, 0.34);
+    border-color: rgba(255, 77, 0, 0.34);
     background: var(--accent-soft);
     transform: translateY(-1px);
 }
@@ -450,8 +450,8 @@ textarea:focus {
     border: 1px solid rgba(32, 26, 21, 0.12);
     border-radius: 8px;
     background:
-        linear-gradient(rgba(232, 93, 31, 0.12) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(232, 93, 31, 0.12) 1px, transparent 1px),
+        linear-gradient(rgba(255, 77, 0, 0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 77, 0, 0.12) 1px, transparent 1px),
         rgba(255, 255, 255, 0.62);
     background-size: 14px 14px;
 }
@@ -502,7 +502,7 @@ textarea:focus {
     height: 0.68rem;
     display: block;
     border-radius: 999px;
-    background: rgba(232, 93, 31, 0.26);
+    background: rgba(255, 77, 0, 0.26);
     margin-bottom: 0.75rem;
 }
 
@@ -542,7 +542,7 @@ textarea:focus {
     position: absolute;
     inset: 0;
     transform: translateX(-100%);
-    background: linear-gradient(90deg, transparent, rgba(232, 93, 31, 0.12), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 77, 0, 0.12), transparent);
     animation: shimmer 1.25s var(--ease) infinite;
 }
 
@@ -603,7 +603,7 @@ textarea:focus {
     display: inline-flex;
     min-height: 1.9rem;
     align-items: center;
-    border: 1px solid rgba(232, 93, 31, 0.22);
+    border: 1px solid rgba(255, 77, 0, 0.22);
     border-radius: 999px;
     padding: 0 0.7rem;
     color: var(--accent-ink);
@@ -804,7 +804,7 @@ textarea:focus {
 
 .read-list li {
     padding-left: 1rem;
-    border-left: 2px solid rgba(232, 93, 31, 0.22);
+    border-left: 2px solid rgba(255, 77, 0, 0.22);
 }
 
 .persona-list strong,
@@ -883,7 +883,7 @@ textarea:focus {
     align-items: center;
     justify-content: center;
     color: var(--accent-ink);
-    border: 1px solid rgba(232, 93, 31, 0.2);
+    border: 1px solid rgba(255, 77, 0, 0.2);
     border-radius: 999px;
     background: rgba(251, 230, 216, 0.72);
     font-family: var(--font-mono);

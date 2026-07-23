@@ -13,7 +13,7 @@ A simple, modern personal website showcasing professional work and personal bran
 ## Files
 
 - `index.html` - Main HTML structure
-- `gtm-strategist.html` - Interactive B2B SaaS GTM strategy planner
+- `gtm-strategist.html` - Domain-first B2B SaaS GTM strategy planner
 - `gtm-strategist.css` - Planner styling
 - `gtm-strategist.js` - Planner strategy logic
 - `styles.css` - All styling and responsive design

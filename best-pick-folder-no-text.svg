@@ -2,7 +2,7 @@
   <defs>
     <linearGradient id="folderGrad" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#F3A576"/>
-      <stop offset="100%" stop-color="#E85D1F"/>
+      <stop offset="100%" stop-color="#FF4D00"/>
     </linearGradient>
     <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
       <feDropShadow dx="0" dy="10" stdDeviation="12" flood-opacity="0.12"/>
@@ -13,7 +13,7 @@
     <path d="M70 60 H180 C200 60 210 80 225 92 H430 C455 92 470 107 470 132 V300
              C470 330 450 350 420 350 H92 C62 350 42 330 42 300 V88
              C42 72 54 60 70 60 Z"
-          fill="#C64A12"/>
+          fill="#E04400"/>
 
     <rect x="42" y="105" width="428" height="245" rx="24"
           fill="url(#folderGrad)"/>
